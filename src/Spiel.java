@@ -8,24 +8,24 @@ import java.util.Random;
 
 public class Spiel extends PApplet {
     //Variablen
-    int speed = 2;
+    private int speed = 2;
 
-    int gegnerNummer = 25;
-    int AutoInterval = 1000;
-    float lastAddTime = 0;
+    private int gegnerNummer = 25;
+    private int AutoInterval = 1000;
+    private float lastAddTime = 0;
 
-    //
-    Background background;
-    Auto Spieler;
-    ArrayList<GegenAuto> Gegner = new ArrayList<>();
-    Lebensbalken Leben;
-    GameScreen gameScreen = GameScreen.START_SCREEN;
-    ScreenControll Screen;
-    ArrayList<Herz> herz = new ArrayList<>();
-    ArrayList<Muenzen> muenze = new ArrayList<>();
-    Score score;
-    ArrayList<Speedway> speedBlock = new ArrayList<>();
-    ArrayList<Schraubenschluessel> Tool = new ArrayList<>();
+    //Deklaration
+    private Background background;
+    private Auto Spieler;
+    private ArrayList<GegenAuto> Gegner = new ArrayList<>();
+    private Lebensbalken Leben;
+    private GameScreen gameScreen = GameScreen.START_SCREEN;
+    private ScreenControll Screen;
+    private ArrayList<Herz> herz = new ArrayList<>();
+    private ArrayList<Muenzen> muenze = new ArrayList<>();
+    private Score score;
+    private ArrayList<Speedway> speedBlock = new ArrayList<>();
+    private ArrayList<Schraubenschluessel> Tool = new ArrayList<>();
 
 
     public void settings() {
@@ -33,34 +33,11 @@ public class Spiel extends PApplet {
     }
 
     public void setup(){
-
-
-        String image_path1 = "data/Spieler.png";
-        PImage Auto;
-        Auto = this.loadImage(image_path1);
-
-        String image_path2 = "data/Gegner.png";
-        PImage Gegner;
-        Gegner = this.loadImage(image_path2);
-
-        String image_pathherz = "data/heart.png";
-        PImage herz;
-        herz = this.loadImage(image_pathherz);
-
-        String image_pathcoin = "data/coin.png";
-        PImage muenze;
-        muenze = this.loadImage(image_pathherz);
-
-        String image_pathTool = "data/Schraubenschlüssel.png";
-        PImage tool;
-        tool = this.loadImage(image_pathTool);
-
         background = new Background(this);
         Spieler = new Auto(this);
         Leben = new Lebensbalken(this);
         Screen = new ScreenControll(this);
         score = new Score(this);
-
     }
     public void draw(){
         if (gameScreen == GameScreen.START_SCREEN) {
