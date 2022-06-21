@@ -165,11 +165,12 @@ public class Spiel extends PApplet {
         }
 
         //Tools
-
-
-
-
-
+        for(int i =0; i< Tool.size() ;i++){
+            Schraubenschluessel aktuellesTool = Tool.get(i);
+            if(aktuellesTool.getPosY() > 700){
+                Tool.remove(i);
+            }
+        }
     }
 
 
