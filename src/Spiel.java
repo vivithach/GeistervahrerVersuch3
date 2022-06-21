@@ -37,29 +37,29 @@ public class Spiel extends PApplet {
 
         String image_path1 = "data/Spieler.png";
         PImage Auto;
-        Auto = loadImage(image_path1);
+        Auto = this.loadImage(image_path1);
 
         String image_path2 = "data/Gegner.png";
         PImage Gegner;
-        Gegner = loadImage(image_path2);
+        Gegner = this.loadImage(image_path2);
 
         String image_pathherz = "data/heart.png";
         PImage herz;
-        herz = loadImage(image_pathherz);
+        herz = this.loadImage(image_pathherz);
 
         String image_pathcoin = "data/coin.png";
         PImage muenze;
-        muenze = loadImage(image_pathherz);
+        muenze = this.loadImage(image_pathherz);
 
         String image_pathTool = "data/Schraubenschlüssel.png";
         PImage tool;
-        tool = loadImage(image_pathTool);
+        tool = this.loadImage(image_pathTool);
 
-        background = new Background();
-        Spieler = new Auto();
-        Leben = new Lebensbalken();
-        Screen = new ScreenControll();
-        score = new Score();
+        background = new Background(this);
+        Spieler = new Auto(this);
+        Leben = new Lebensbalken(this);
+        Screen = new ScreenControll(this);
+        score = new Score(this);
 
     }
     public void draw(){
@@ -112,7 +112,7 @@ public class Spiel extends PApplet {
             Random rand = new Random();
 
             for(int i = 0; i < anzahlAutos.get(rand.nextInt(anzahlAutos.size()));i++){
-                Gegner.add(new GegenAuto());
+                Gegner.add(new GegenAuto(this));
             }
 
             //Herzen
@@ -120,7 +120,7 @@ public class Spiel extends PApplet {
             Random rand2 = new Random();
 
             if(anzahlHerzen.get(rand2.nextInt(anzahlHerzen.size())) == 1){
-                herz.add(new Herz());
+                herz.add(new Herz(this));
             }
 
             //Münzen
@@ -128,7 +128,7 @@ public class Spiel extends PApplet {
             Random rand3 = new Random();
 
             if(anzahlMuenzen.get(rand3.nextInt(anzahlMuenzen.size())) == 0){
-                muenze.add(new Muenzen());
+                muenze.add(new Muenzen(this));
             }
 
             //SpeedBlöcke
@@ -136,7 +136,7 @@ public class Spiel extends PApplet {
             Random rand4 = new Random();
 
             if(anzahlspeedBlock.get(rand4.nextInt(anzahlspeedBlock.size())) == 1){
-                speedBlock.add(new Speedway());
+                speedBlock.add(new Speedway(this));
             }
 
             //Schraubenschlüsssel
@@ -144,7 +144,7 @@ public class Spiel extends PApplet {
             Random rand5 = new Random();
 
             if(anzahlTool.get(rand5.nextInt(anzahlTool.size())) == 1){
-                Tool.add(new Schraubenschluessel());
+                Tool.add(new Schraubenschluessel(this));
             }
 
 

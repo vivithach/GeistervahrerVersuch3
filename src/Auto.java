@@ -7,8 +7,9 @@ public class Auto extends Spielelement {
 
     boolean verkehrtherum = false;
 
-    Auto(){
-        Auto = loadImage(image_path1);
+    Auto(PApplet app){
+        super(app);
+        Auto = app.loadImage(image_path1);
         setPosX(265);
         setPosY(450);
         setBreite(60);
@@ -17,7 +18,7 @@ public class Auto extends Spielelement {
 
 
     public void drawing(){
-        image(Auto,getPosX(),getPosY(),getBreite(),getHöhe());
+        app.image(Auto,getPosX(),getPosY(),getBreite(),getHöhe());
     }
 
 

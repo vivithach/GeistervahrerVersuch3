@@ -1,3 +1,4 @@
+import processing.core.PApplet;
 import processing.core.PImage;
 
 import java.util.Arrays;
@@ -12,8 +13,9 @@ public class Muenzen extends Spielelement{
     List<Integer> X_POSITIONEN_DER_SPUREN = Arrays.asList(40,160,280,400,520);
     Random rand = new Random();
 
-    Muenzen(){
-        muenze = loadImage(image_pathcoin);
+    Muenzen(PApplet app){
+        super(app);
+        muenze = app.loadImage(image_pathcoin);
         setPosX(X_POSITIONEN_DER_SPUREN.get(rand.nextInt(X_POSITIONEN_DER_SPUREN.size())));
         setPosY(-50);
         setBreite(40);
@@ -22,7 +24,7 @@ public class Muenzen extends Spielelement{
 
 
     void drawing(){
-        image(muenze,getPosX(),getPosY(),getBreite(),getHöhe());
+        app.image(muenze,getPosX(),getPosY(),getBreite(),getHöhe());
 
     }
 

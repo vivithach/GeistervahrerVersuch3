@@ -1,6 +1,9 @@
+import processing.core.PApplet;
+
 public class Lebensbalken extends Spielelement{
     private int Leben;
-    Lebensbalken(){
+    Lebensbalken(PApplet app){
+        super(app);
         setPosX(20);
         setPosY(20);
         Leben = 250;
@@ -19,9 +22,9 @@ public class Lebensbalken extends Spielelement{
     }
 
     public void drawing(){
-        stroke(255);
-        strokeWeight(10);
-        line(getPosX(), getPosY(), Leben,getPosY());
+        app.stroke(255);
+        app.strokeWeight(10);
+        app.line(getPosX(), getPosY(), Leben,getPosY());
     }
 
     public int getLeben() {

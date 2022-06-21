@@ -1,10 +1,15 @@
 import processing.core.PApplet;
 
-public class Spielelement extends PApplet {
+public class Spielelement {
     private int PosX;
     private int PosY;
     private int breite;
     private int höhe;
+    protected PApplet app;
+
+    public Spielelement(PApplet app) {
+        this.app = app;
+    }
 
     public int getPosX() {
         return PosX;

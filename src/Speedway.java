@@ -1,3 +1,4 @@
+import processing.core.PApplet;
 import processing.core.PImage;
 
 import java.util.Arrays;
@@ -13,8 +14,9 @@ public class Speedway extends Spielelement{
 
     boolean reingefahren = false;
 
-    Speedway(){
-        rain = loadImage(image_pathrain);
+    Speedway(PApplet app){
+        super(app);
+        rain = app.loadImage(image_pathrain);
         setPosX(X_POSITIONEN_DER_SPUREN.get(rand.nextInt(X_POSITIONEN_DER_SPUREN.size())));
         setPosY(-100);
         setBreite(90);
@@ -23,7 +25,7 @@ public class Speedway extends Spielelement{
 
 
     void drawing(){
-        image(rain,getPosX(),getPosY(),getBreite(),getHöhe());
+        app.image(rain,getPosX(),getPosY(),getBreite(),getHöhe());
 
     }
 

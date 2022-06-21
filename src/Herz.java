@@ -1,3 +1,4 @@
+import processing.core.PApplet;
 import processing.core.PImage;
 
 import java.util.Arrays;
@@ -11,8 +12,9 @@ public class Herz extends Spielelement{
     List<Integer> X_POSITIONEN_DER_SPUREN = Arrays.asList(40,160,280,400,520);
     Random rand = new Random();
 
-    Herz(){
-        herz = loadImage(image_pathherz);
+    Herz(PApplet app){
+        super(app);
+        herz = app.loadImage(image_pathherz);
 
         setPosX(X_POSITIONEN_DER_SPUREN.get(rand.nextInt(X_POSITIONEN_DER_SPUREN.size())));
         setPosY(-500);
@@ -22,7 +24,7 @@ public class Herz extends Spielelement{
 
 
     void drawing(){
-        image(herz,getPosX(),getPosY(),getBreite(),getHöhe());
+        app.image(herz,getPosX(),getPosY(),getBreite(),getHöhe());
 
     }
 

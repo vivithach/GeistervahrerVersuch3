@@ -1,17 +1,20 @@
+import processing.core.PApplet;
+
 public class Score extends Spielelement{
 
     private int score;
 
-    Score(){
+    Score(PApplet app){
+        super(app);
         score = 0;
         setPosX(50);
         setPosY(50);
     }
 
     void drawing(){
-        stroke(255);
-        textSize(20);
-        text("Score: "+ this.score, getPosX(), getPosY());
+        app.stroke(255);
+        app.textSize(20);
+        app.text("Score: "+ this.score, getPosX(), getPosY());
     }
 
     void erhöheScore(){

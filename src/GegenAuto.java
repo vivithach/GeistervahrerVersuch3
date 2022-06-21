@@ -14,8 +14,9 @@ public class GegenAuto extends Spielelement{
     Random rand = new Random();
 
 
-    GegenAuto(){
-        Gegner = loadImage(image_path2);
+    GegenAuto(PApplet app){
+        super(app);
+        Gegner = app.loadImage(image_path2);
         setPosX(X_POSITIONEN_DER_SPUREN.get(rand.nextInt(X_POSITIONEN_DER_SPUREN.size())));
         setPosY(-400);
         setBreite(60);
@@ -25,7 +26,7 @@ public class GegenAuto extends Spielelement{
 
 
     void drawing(){
-        image(Gegner,getPosX(),getPosY(),getBreite(),getHöhe());
+        app.image(Gegner,getPosX(),getPosY(),getBreite(),getHöhe());
     }
 
     void act(int speed){

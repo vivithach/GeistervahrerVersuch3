@@ -1,3 +1,4 @@
+import processing.core.PApplet;
 import processing.core.PImage;
 
 import java.util.Arrays;
@@ -14,8 +15,9 @@ public class Schraubenschluessel extends Spielelement{
 
     //boolean reingefahren = false;
 
-    Schraubenschluessel(){
-        tool = loadImage(image_pathTool);
+    Schraubenschluessel(PApplet app){
+        super(app);
+        tool = app.loadImage(image_pathTool);
         setPosX(X_POSITIONEN_DER_SPUREN.get(rand.nextInt(X_POSITIONEN_DER_SPUREN.size())));
         setPosY(-100);
         setBreite(90);
@@ -24,7 +26,7 @@ public class Schraubenschluessel extends Spielelement{
 
 
     public void drawing(){
-        image(tool,getPosX(),getPosY(),getBreite(),getHöhe());
+        app.image(tool,getPosX(),getPosY(),getBreite(),getHöhe());
 
     }
 

@@ -1,7 +1,7 @@
 import processing.core.PApplet;
 import processing.core.PImage;
 
-public class Background extends Spielelement{
+public class Background extends Spielelement {
     String image_path = "data/Hintergrund.png";
 
     PImage background1;
@@ -11,27 +11,28 @@ public class Background extends Spielelement{
     private int background1_y = 0;
 
     private int background2_x = 0;
-    private int background2_y = height;
+    private int background2_y = app.height;
 
-    Background(){
-        background1 = loadImage(image_path);
-        background2 = loadImage(image_path);
+    Background(PApplet app) {
+        super(app);
+        background1 = app.loadImage(image_path);
+        background2 = app.loadImage(image_path);
     }
 
-    void drawing(){
-        image(background1,background1_x,background1_y,width,height);
-        image(background2,background2_x,background2_y,width,height);
+    void drawing() {
+        app.image(background1, background1_x, background1_y, app.width, app.height);
+        app.image(background2, background2_x, background2_y, app.width, app.height);
     }
 
-    void act(int speed){
+    void act(int speed) {
         background1_y = background1_y + speed;
         background2_y = background2_y + speed;
 
-        if(background1_y >= height){
-            background1_y = -height;
+        if (background1_y >= app.height) {
+            background1_y = -app.height;
         }
-        if(background2_y >= height){
-            background2_y = -height;
+        if (background2_y >= app.height) {
+            background2_y = -app.height;
         }
 
     }
