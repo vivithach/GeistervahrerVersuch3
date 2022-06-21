@@ -32,9 +32,4 @@ public class Herz extends Spielelement{
         setPosY(getPosY()+speed);
     }
 
-    boolean kollision(Auto Spieler){
-        boolean KollisionX = (getPosX() >= Spieler.getPosX() || (getPosX()+50) >= Spieler.getPosX()) && (getPosX() <= (Spieler.getPosX()+50) || (getPosX()+50) <= (Spieler.getPosX()+50));
-        boolean KollisionY = (getPosY() >= Spieler.getPosY() || (getPosY()+100) >= Spieler.getPosY()) && (getPosY() <= (Spieler.getPosY()+100) || (getPosY()+100) <= (Spieler.getPosY()+100));
-        return (KollisionX && KollisionY);
-    }
 }
