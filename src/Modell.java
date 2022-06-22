@@ -250,4 +250,9 @@ public class Modell {
     public void setScore(Score score) {
         this.score = score;
     }
+
+    //nur für Test benötigt.
+    public ArrayList<GegenAuto> getGegner() {
+        return Gegner;
+    }
 }
