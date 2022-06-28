@@ -6,42 +6,41 @@ import java.util.List;
 import java.util.Random;
 
 public class Modell {
-    private int speed;
 
-    private int AutoInterval;
+    private int SpielGeschwindigkeit;
+    private int hinzufruegeIntervall;
     private float lastAddTime;
-
-
     private Background background;
-    SpielerAuto Spieler;
-    ArrayList<GegnerAuto> Gegner;
     private Lebensbalken Leben;
-    GameScreen gameScreen;
-    ScreenControll Screen;
-    ArrayList<Herz> herz;
-    ArrayList<Muenzen> muenze;
     private Score score;
-    ArrayList<Speedway> speedBlock;
-    ArrayList<Schraubenschluessel> Tool;
-
     private PApplet app;
+
+    SpielerAuto Spieler;
+    ArrayList<GegnerAuto> GegenerAutos;
+    ArrayList<Herz> HerzItems;
+    ArrayList<Muenzen> MuenzItems;
+    ArrayList<Speedway> SpeedwayItems;
+    ArrayList<Schraubenschluessel> SchraubenschluesselItems;
+
+    ScreenControll Screen;
+    GameScreen gameScreen;
 
 
     Modell(PApplet app){
 
         this.app = app;
-        speed = 2;
+        SpielGeschwindigkeit = 2;
 
-        AutoInterval = 1000;
+        hinzufruegeIntervall = 1000;
         lastAddTime = 0;
         gameScreen = GameScreen.START_SCREEN;
 
 
-        Gegner = new ArrayList<>();
-        herz = new ArrayList<>();
-        muenze = new ArrayList<>();
-        speedBlock = new ArrayList<>();
-        Tool = new ArrayList<>();
+        GegenerAutos = new ArrayList<>();
+        HerzItems = new ArrayList<>();
+        MuenzItems = new ArrayList<>();
+        SpeedwayItems = new ArrayList<>();
+        SchraubenschluesselItems = new ArrayList<>();
         background = new Background(app);
         Spieler = new SpielerAuto(app);
         Leben = new Lebensbalken(app);
@@ -49,6 +48,8 @@ public class Modell {
         score = new Score(app);
 
     }
+
+
 
     void startGame() {
         gameScreen=GameScreen.GAME_SCREEN;
@@ -58,201 +59,205 @@ public class Modell {
         gameScreen=GameScreen.GAMEOVER_SCREEN;
     }
 
-    void ObjektAdder(){
-        if (app.millis()-lastAddTime > AutoInterval) {
 
+    public void fuegeGegeneAutosHinzu() {
+        List<Integer> anzahlAutos = Arrays.asList(1,2,3,4,1,2,1,2,3,4,1,2);
+        Random rand = new Random();
 
-            //Autos
-            List<Integer> anzahlAutos = Arrays.asList(1,2,3,4,1,2,1,2,3,4,1,2);
-            Random rand = new Random();
-
-            for(int i = 0; i < anzahlAutos.get(rand.nextInt(anzahlAutos.size()));i++){
-                Gegner.add(new GegnerAuto(app));
-            }
-
-            //Herzen
-            List<Integer> anzahlHerzen = Arrays.asList(1,0,0,0,0,0,0,0,0,0,0,0);
-            Random rand2 = new Random();
-
-            if(anzahlHerzen.get(rand2.nextInt(anzahlHerzen.size())) == 1){
-                herz.add(new Herz(app));
-            }
-
-            //Münzen
-            List<Integer> anzahlMuenzen = Arrays.asList(1,0,0,0,0,0,0,0,0,0,0,0);
-            Random rand3 = new Random();
-
-            if(anzahlMuenzen.get(rand3.nextInt(anzahlMuenzen.size())) == 0){
-                muenze.add(new Muenzen(app));
-            }
-
-            //SpeedBlöcke
-            List<Integer> anzahlspeedBlock = Arrays.asList(1,1,0,0,0,0,0,0,0,0,0,0);
-            Random rand4 = new Random();
-
-            if(anzahlspeedBlock.get(rand4.nextInt(anzahlspeedBlock.size())) == 1){
-                speedBlock.add(new Speedway(app));
-            }
-
-            addSchraubenschluessel();
-
-
-            lastAddTime = app.millis();
+        for(int i = 0; i < anzahlAutos.get(rand.nextInt(anzahlAutos.size()));i++){
+            GegenerAutos.add(new GegnerAuto(app));
         }
     }
 
-    private void addSchraubenschluessel() {
+    public void loescheGegnerAuto() {
+        for (int i = 0; i < GegenerAutos.size(); i++) {
+            GegnerAuto AktuellesAuto = GegenerAutos.get(i);
+            if (AktuellesAuto.getPosY() > 700) {
+                GegenerAutos.remove(i);
+            }
+        }
+    }
+
+
+    public void fuegeHerzenHinzu() {
+        List<Integer> anzahlHerzen = Arrays.asList(1,0,0,0,0,0,0,0,0,0,0,0);
+        Random rand2 = new Random();
+
+        if(anzahlHerzen.get(rand2.nextInt(anzahlHerzen.size())) == 1){
+            HerzItems.add(new Herz(app));
+        }
+    }
+
+    public void loescheHerz() {
+        for (int i = 0; i < HerzItems.size(); i++) {
+            Herz aktuellesHerz = HerzItems.get(i);
+            if (aktuellesHerz.getPosY() > 700) {
+                HerzItems.remove(i);
+            }
+        }
+    }
+
+
+    public void fuegeMuenzenHinzu() {
+        List<Integer> anzahlMuenzen = Arrays.asList(1,0,0,0,0,0,0,0,0,0,0,0);
+        Random rand3 = new Random();
+
+        if(anzahlMuenzen.get(rand3.nextInt(anzahlMuenzen.size())) == 0){
+            MuenzItems.add(new Muenzen(app));
+        }
+    }
+
+    public void loescheMuenze() {
+        for(int i = 0; i< MuenzItems.size() ; i++){
+            Muenzen aktuellesMuenze = MuenzItems.get(i);
+            if(aktuellesMuenze.getPosY()> 700){
+                MuenzItems.remove(i);
+            }
+        }
+    }
+
+    public void fuegeSpeedwaysHinzu() {
+        List<Integer> anzahlspeedBlock = Arrays.asList(1,1,0,0,0,0,0,0,0,0,0,0);
+        Random rand4 = new Random();
+
+        if(anzahlspeedBlock.get(rand4.nextInt(anzahlspeedBlock.size())) == 1){
+            SpeedwayItems.add(new Speedway(app));
+        }
+    }
+
+    public void loescheSpeedway() {
+        for (int i = 0; i < SpeedwayItems.size(); i++) {
+            Speedway aktuellesspeedBlock = SpeedwayItems.get(i);
+            if (aktuellesspeedBlock.getPosY() > 1750) {
+                if (aktuellesspeedBlock.isReingefahren()) {
+                    SpielGeschwindigkeit = 2;
+                    hinzufruegeIntervall = 1000;
+                    aktuellesspeedBlock.setReingefahren(false);
+                }
+                SpeedwayItems.remove(i);
+            }
+        }
+    }
+
+    public void fuegeSchraubenschuesselHinzu() {
         List<Integer> anzahlTool = Arrays.asList(1,1,0,0,0,0,0,0,0,0,0,0);
         Random rand5 = new Random();
 
         if(anzahlTool.get(rand5.nextInt(anzahlTool.size())) == 1){
-            Tool.add(new Schraubenschluessel(app));
+            SchraubenschluesselItems.add(new Schraubenschluessel(app));
         }
     }
 
-    void AutoDeleter() {
-        for (int i = 0; i < Gegner.size(); i++) {
-            GegnerAuto AktuellesAuto = Gegner.get(i);
-            if (AktuellesAuto.getPosY() > 700) {
-                Gegner.remove(i);
-            }
-        }
-    }
-
-    void SpeedwayDeleter() {
-        for (int i = 0; i < speedBlock.size(); i++) {
-            Speedway aktuellesspeedBlock = speedBlock.get(i);
-            if (aktuellesspeedBlock.getPosY() > 1750) {
-                if (aktuellesspeedBlock.isReingefahren()) {
-                    speed = 2;
-                    AutoInterval = 1000;
-                    aktuellesspeedBlock.setReingefahren(false);
-                }
-                speedBlock.remove(i);
-            }
-        }
-    }
-
-    void HerzDeleter() {
-        for (int i = 0; i < herz.size(); i++) {
-            Herz aktuellesHerz = herz.get(i);
-            if (aktuellesHerz.getPosY() > 700) {
-                herz.remove(i);
-            }
-        }
-    }
-
-    void MuenzDeleter() {
-        for(int i =0; i< muenze.size() ;i++){
-            Muenzen aktuellesMuenze = muenze.get(i);
-            if(aktuellesMuenze.getPosY()> 700){
-                muenze.remove(i);
-            }
-        }
-    }
-
-    void ToolDeleter() {
-        for (int i = 0; i < Tool.size(); i++) {
-            Schraubenschluessel aktuellesTool = Tool.get(i);
+    public void loescheSchraubenschluessel() {
+        for (int i = 0; i < SchraubenschluesselItems.size(); i++) {
+            Schraubenschluessel aktuellesTool = SchraubenschluesselItems.get(i);
             if (aktuellesTool.getPosY() > 700) {
-                Tool.remove(i);
+                SchraubenschluesselItems.remove(i);
             }
         }
     }
 
-    void RUN(){
 
-        //Überprüfen Leben
+    public void fuegeObjekteHinzu(){
+        if (app.millis()-lastAddTime > hinzufruegeIntervall) {
+            fuegeGegeneAutosHinzu();
+            fuegeHerzenHinzu();
+            fuegeMuenzenHinzu();
+            fuegeSpeedwaysHinzu();
+            fuegeSchraubenschuesselHinzu();
+            lastAddTime = app.millis();
+        }
+    }
+
+    public void loescheObjekte(){
+        loescheGegnerAuto();
+        loescheSpeedway();
+        loescheHerz();
+        loescheMuenze();
+        loescheSchraubenschluessel();
+    }
+
+    public void aktualiesiereZustand() {
         if(Leben.getLeben()<= 20){
             gameOver();
         }
-
-        //Hintergrund
         background.drawing();
-        background.bewegeHintergrund(speed);
-
-        //Objekt handler
-        ObjektAdder();
-        AutoDeleter();
-        HerzDeleter();
-        ToolDeleter();
-        MuenzDeleter();
-        SpeedwayDeleter();
-
-
-        //SpeedWay
-        for(Speedway aktuellesspeedBlock:speedBlock){
+        background.bewegeHintergrund(SpielGeschwindigkeit);
+        for(Speedway aktuellesspeedBlock: SpeedwayItems){
             aktuellesspeedBlock.drawing();
-            aktuellesspeedBlock.bewegeSpeedway(speed);
-
+            aktuellesspeedBlock.bewegeSpeedway(SpielGeschwindigkeit);
         }
-        for(int i =0; i< speedBlock.size() ;i++){
-            Speedway aktuellesspeedBlock = speedBlock.get(i);
+        for(Herz aktuellesHerz: HerzItems){
+            aktuellesHerz.drawing();
+            aktuellesHerz.bewegeHerz(SpielGeschwindigkeit);
+        }
+        for(Muenzen aktuellesMuenze: MuenzItems){
+            aktuellesMuenze.drawing();
+            aktuellesMuenze.bewegeMuenzen(SpielGeschwindigkeit);
+        }
+        for(Schraubenschluessel aktuellesTool: SchraubenschluesselItems){
+            aktuellesTool.drawing();
+            aktuellesTool.bewegeSchraubenschluessel(SpielGeschwindigkeit);
+        }
+        Spieler.drawing();
+        Leben.drawing();
+        score.drawing();
+    }
+
+
+
+    void RUN(){
+
+        fuegeObjekteHinzu();
+        loescheObjekte();
+        aktualiesiereZustand();
+
+
+        for(int i = 0; i< SpeedwayItems.size() ; i++){
+            Speedway aktuellesspeedBlock = SpeedwayItems.get(i);
             if(aktuellesspeedBlock.kollision(Spieler)){
-                speed = 10;
-                AutoInterval = 250;
+                SpielGeschwindigkeit = 10;
+                hinzufruegeIntervall = 250;
                 aktuellesspeedBlock.setReingefahren(true);
             }
         }
 
 
-        //Herzen
-        for(Herz aktuellesHerz:herz){
-            aktuellesHerz.drawing();
-            aktuellesHerz.bewegeHerz(speed);
-        }
-        for(int i =0; i< herz.size() ;i++){
-            Herz aktuellesHerz = herz.get(i);
+        for(int i = 0; i< HerzItems.size() ; i++){
+            Herz aktuellesHerz = HerzItems.get(i);
             if(aktuellesHerz.kollision(Spieler)){
-                herz.remove(i);
+                HerzItems.remove(i);
                 Leben.plusLeben();
             }
         }
 
-        //Münzen
-        for(Muenzen aktuellesMuenze:muenze){
-            aktuellesMuenze.drawing();
-            aktuellesMuenze.bewegeMuenzen(speed);
-        }
-        for(int i =0; i< muenze.size() ;i++){
-            Muenzen aktuellesMuenze = muenze.get(i);
+
+        for(int i = 0; i< MuenzItems.size() ; i++){
+            Muenzen aktuellesMuenze = MuenzItems.get(i);
             if(aktuellesMuenze.kollision(Spieler)){
-                muenze.remove(i);
+                MuenzItems.remove(i);
                 score.erhöheScore();
             }
         }
 
-        //Tools
-        for(Schraubenschluessel aktuellesTool:Tool){
-            aktuellesTool.drawing();
-            aktuellesTool.bewegeSchraubenschluessel(speed);
-        }
-        for(int i =0; i< Tool.size() ;i++){
-            Schraubenschluessel aktuellesTool = Tool.get(i);
+        for(int i = 0; i< SchraubenschluesselItems.size() ; i++){
+            Schraubenschluessel aktuellesTool = SchraubenschluesselItems.get(i);
             if(aktuellesTool.kollision(Spieler)){
-                Tool.remove(i);
+                SchraubenschluesselItems.remove(i);
                 //ändere Richtung
                 Spieler.aendereSteuerung();
             }
         }
 
-
-        //Gegner
-        for(GegnerAuto aktuellesAuto:Gegner){
+        for(GegnerAuto aktuellesAuto: GegenerAutos){
             aktuellesAuto.drawing();
-            aktuellesAuto.bewegeGegnerAuto(speed);
+            aktuellesAuto.bewegeGegnerAuto(SpielGeschwindigkeit);
             if(aktuellesAuto.kollision(Spieler)){
                 Leben.minusLeben();
             }
         }
-
-        //steuerungSpielerAuto();
-        Spieler.drawing();
-
-        Leben.drawing();
-        score.drawing();
-
     }
+
 
     public Score getScore() {
         return score;
@@ -263,11 +268,11 @@ public class Modell {
     }
 
 
-    public int getSpeed() {
-        return speed;
+    public int getSpielGeschwindigkeit() {
+        return SpielGeschwindigkeit;
     }
 
-    public void setSpeed(int speed) {
-        this.speed = speed;
+    public void setSpielGeschwindigkeit(int spielGeschwindigkeit) {
+        this.SpielGeschwindigkeit = spielGeschwindigkeit;
     }
 }
