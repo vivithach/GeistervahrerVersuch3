@@ -12,7 +12,7 @@ public class AutoTest{
         int startPosition = testAuto.getPosX();
         testAuto.setPosX(startPosition);
         testAuto.bewegeAutoNachLinks();
-        assertEquals(startPosition-testAuto.getBewegung(),testAuto.getPosX());
+        assertEquals(startPosition-testAuto.getBewegeObjektUmEinheiten(),testAuto.getPosX());
     }
 
     @Test
@@ -22,7 +22,7 @@ public class AutoTest{
         int startPosition = testAuto.getPosX();
         testAuto.setPosX(startPosition);
         testAuto.bewegeAutoNachLinks();
-        assertEquals(startPosition+testAuto.getBewegung(),testAuto.getPosX());
+        assertEquals(startPosition+testAuto.getBewegeObjektUmEinheiten(),testAuto.getPosX());
     }
 
     @Test
@@ -31,7 +31,7 @@ public class AutoTest{
         int startPosition = testAuto.getPosX();
         testAuto.setPosX(startPosition);
         testAuto.bewegeAutoNachRechts();
-        assertEquals(startPosition+testAuto.getBewegung(),testAuto.getPosX());
+        assertEquals(startPosition+testAuto.getBewegeObjektUmEinheiten(),testAuto.getPosX());
     }
 
     @Test
@@ -41,7 +41,7 @@ public class AutoTest{
         int startPosition = testAuto.getPosX();
         testAuto.setPosX(startPosition);
         testAuto.bewegeAutoNachRechts();
-        assertEquals(startPosition-testAuto.getBewegung(),testAuto.getPosX());
+        assertEquals(startPosition-testAuto.getBewegeObjektUmEinheiten(),testAuto.getPosX());
     }
 
     @Test

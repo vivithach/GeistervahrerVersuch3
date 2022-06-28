@@ -5,7 +5,7 @@ public class Auto extends Spielelement {
     private String BildAdresse = "data/Spieler.png";
     private PImage Bild = null;
     
-    private int bewegung = 8;
+    private int bewegeObjektUmEinheiten = 8;
     private int begrenzungLinks = 25;
     private int begrenzungRechts = 515;
 
@@ -46,20 +46,20 @@ public class Auto extends Spielelement {
     }
 
     private void bewegeNachLinks() {
-        if(getPosX()-bewegung <= begrenzungLinks){
+        if(getPosX()- bewegeObjektUmEinheiten <= begrenzungLinks){
             setPosX(begrenzungLinks);
         }
         else{
-            setPosX(getPosX()-bewegung);
+            setPosX(getPosX()- bewegeObjektUmEinheiten);
         }
     }
 
     private void bewegeNachRechts() {
-        if (getPosX()+bewegung >= begrenzungRechts){
+        if (getPosX()+ bewegeObjektUmEinheiten >= begrenzungRechts){
             setPosX(begrenzungRechts);
         }
         else{
-            setPosX(getPosX()+bewegung);
+            setPosX(getPosX()+ bewegeObjektUmEinheiten);
         }
     }
 
@@ -72,8 +72,8 @@ public class Auto extends Spielelement {
         }
     }
 
-    public int getBewegung() {
-        return bewegung;
+    public int getBewegeObjektUmEinheiten() {
+        return bewegeObjektUmEinheiten;
     }
 
     public int getBegrenzungLinks() {
