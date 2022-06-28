@@ -4,10 +4,10 @@ import processing.core.PApplet;
 
 public class AutoTest{
 
-    PApplet app;
+    private PApplet app;
 
     @Test
-    public void bewegeLinksTest() {
+    public void bewegeAutoNachLinksTest() {
         Auto testAuto = new Auto(app);
         int startPosition = testAuto.getPosX();
         testAuto.setPosX(startPosition);
@@ -16,17 +16,17 @@ public class AutoTest{
     }
 
     @Test
-    public void bewegeLinksMitSchlüsselTest() {
+    public void bewegeAutoNachLinksMitVerkehrterSteuerungTest() {
         Auto testAuto = new Auto(app);
-        testAuto.aendereSteuerung();
         int startPosition = testAuto.getPosX();
         testAuto.setPosX(startPosition);
+        testAuto.aendereSteuerung();
         testAuto.bewegeAutoNachLinks();
         assertEquals(startPosition+testAuto.getBewegeObjektUmEinheiten(),testAuto.getPosX());
     }
 
     @Test
-    public void bewegeRechtsTest() {
+    public void bewegeAutoNachRechtsTest() {
         Auto testAuto = new Auto(app);
         int startPosition = testAuto.getPosX();
         testAuto.setPosX(startPosition);
@@ -35,50 +35,63 @@ public class AutoTest{
     }
 
     @Test
-    public void bewegeRechtsMitSchlüsselTest() {
+    public void bewegeAutoNachRechtsMitVerkehrterSteuerungTest() {
         Auto testAuto = new Auto(app);
-        testAuto.aendereSteuerung();
         int startPosition = testAuto.getPosX();
         testAuto.setPosX(startPosition);
+
+        testAuto.aendereSteuerung();
         testAuto.bewegeAutoNachRechts();
         assertEquals(startPosition-testAuto.getBewegeObjektUmEinheiten(),testAuto.getPosX());
     }
 
     @Test
-    public void rechterRandTest() {
+    public void bewegeNachLinksRandTest() {
+        Auto testAuto = new Auto(app);
+        testAuto.setPosX(testAuto.getBegrenzungLinks());
+        int startPosition = testAuto.getPosX();
+        testAuto.bewegeAutoNachLinks();
+        assertEquals(startPosition,testAuto.getPosX());
+    }
+
+    @Test
+    public void bewegeNachLinksRandTestMitAbstand() {
+        Auto testAuto = new Auto(app);
+        testAuto.setPosX(testAuto.getBegrenzungLinks()+3);
+        testAuto.bewegeAutoNachLinks();
+        assertEquals(testAuto.getPosX(),testAuto.getBegrenzungLinks());
+    }
+
+    @Test
+    public void bewegeNachRechtsRandTest() {
         Auto testAuto = new Auto(app);
         testAuto.setPosX(testAuto.getBegrenzungRechts());
         int startPosition = testAuto.getPosX();
         testAuto.bewegeAutoNachRechts();
         assertEquals(startPosition,testAuto.getPosX());
+    }
 
+    @Test
+    public void bewegeNachRechtsRandTestMitAbstand() {
+        Auto testAuto = new Auto(app);
         testAuto.setPosX(testAuto.getBegrenzungRechts()-3);
         testAuto.bewegeAutoNachRechts();
         assertEquals(testAuto.getPosX(),testAuto.getBegrenzungRechts());
     }
 
     @Test
-    public void linkerRandTest() {
-        Auto testAuto = new Auto(app);
-        testAuto.setPosX(testAuto.getBegrenzungLinks());
-        int startPosition = testAuto.getPosX();
-        testAuto.bewegeAutoNachLinks();
-        assertEquals(startPosition,testAuto.getPosX());
-
-        testAuto.setPosX(testAuto.getBegrenzungRechts()+3);
-        testAuto.bewegeAutoNachRechts();
-        assertEquals(testAuto.getPosX(),testAuto.getBegrenzungRechts());
-    }
-
-    @Test
-    public void andereRichtungTest() {
+    public void andereRichtungAufVerkehrtherumTest() {
         Auto testAuto = new Auto(app);
         testAuto.setSteuerungIstVerkehrt(false);
         testAuto.aendereSteuerung();
         assertEquals(testAuto.isSteuerungIstVerkehrt(),true);
+    }
+
+    @Test
+    public void andereRichtungAufRichtigherumTest() {
+        Auto testAuto = new Auto(app);
+        testAuto.setSteuerungIstVerkehrt(true);
         testAuto.aendereSteuerung();
         assertEquals(testAuto.isSteuerungIstVerkehrt(),false);
-        testAuto.aendereSteuerung();
-        assertEquals(testAuto.isSteuerungIstVerkehrt(),true);
     }
 }
