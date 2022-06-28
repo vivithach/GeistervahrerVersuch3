@@ -18,11 +18,11 @@ public class Modell {
     private Lebensbalken Leben;
     GameScreen gameScreen;
     ScreenControll Screen;
-    private ArrayList<Herz> herz;
-    private ArrayList<Muenzen> muenze;
+    ArrayList<Herz> herz;
+    ArrayList<Muenzen> muenze;
     private Score score;
-    private ArrayList<Speedway> speedBlock;
-    private ArrayList<Schraubenschluessel> Tool;
+    ArrayList<Speedway> speedBlock;
+    ArrayList<Schraubenschluessel> Tool;
 
     private PApplet app;
 
