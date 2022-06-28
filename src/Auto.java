@@ -3,9 +3,8 @@ import processing.core.PImage;
 
 public class Auto extends Spielelement {
     String image_path1 = "data/Spieler.png";
-    PImage Auto;
+    PImage Bild = null;
 
-    private boolean geladen = false;
 
     private int bewegung = 8;
     private int randLinks = 25;
@@ -24,11 +23,10 @@ public class Auto extends Spielelement {
 
     public void drawing(){
 
-        if(geladen == false){
-            Auto = app.loadImage(image_path1);
-            geladen = true;
+        if(Bild == null){
+            Bild = app.loadImage(image_path1);
         }
-        app.image(Auto,getPosX(),getPosY(),getBreite(),getHöhe());
+        app.image(Bild,getPosX(),getPosY(),getBreite(),getHöhe());
     }
 
 

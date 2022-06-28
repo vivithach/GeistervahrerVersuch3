@@ -94,16 +94,19 @@ public class Modell {
                 speedBlock.add(new Speedway(app));
             }
 
-            //Schraubenschlüsssel
-            List<Integer> anzahlTool = Arrays.asList(1,1,0,0,0,0,0,0,0,0,0,0);
-            Random rand5 = new Random();
-
-            if(anzahlTool.get(rand5.nextInt(anzahlTool.size())) == 1){
-                Tool.add(new Schraubenschluessel(app));
-            }
+            addSchraubenschluessel();
 
 
             lastAddTime = app.millis();
+        }
+    }
+
+    private void addSchraubenschluessel() {
+        List<Integer> anzahlTool = Arrays.asList(1,1,0,0,0,0,0,0,0,0,0,0);
+        Random rand5 = new Random();
+
+        if(anzahlTool.get(rand5.nextInt(anzahlTool.size())) == 1){
+            Tool.add(new Schraubenschluessel(app));
         }
     }
 
