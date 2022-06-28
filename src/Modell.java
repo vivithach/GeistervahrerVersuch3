@@ -13,7 +13,7 @@ public class Modell {
 
 
     private Background background;
-    Auto Spieler;
+    SpielerAuto Spieler;
     ArrayList<GegnerAuto> Gegner;
     private Lebensbalken Leben;
     GameScreen gameScreen;
@@ -43,7 +43,7 @@ public class Modell {
         speedBlock = new ArrayList<>();
         Tool = new ArrayList<>();
         background = new Background(app);
-        Spieler = new Auto(app);
+        Spieler = new SpielerAuto(app);
         Leben = new Lebensbalken(app);
         Screen = new ScreenControll(app);
         score = new Score(app);
@@ -123,10 +123,10 @@ public class Modell {
         for (int i = 0; i < speedBlock.size(); i++) {
             Speedway aktuellesspeedBlock = speedBlock.get(i);
             if (aktuellesspeedBlock.getPosY() > 1750) {
-                if (aktuellesspeedBlock.reingefahren) {
+                if (aktuellesspeedBlock.isReingefahren()) {
                     speed = 2;
                     AutoInterval = 1000;
-                    aktuellesspeedBlock.reingefahren = false;
+                    aktuellesspeedBlock.setReingefahren(false);
                 }
                 speedBlock.remove(i);
             }
@@ -183,7 +183,7 @@ public class Modell {
         //SpeedWay
         for(Speedway aktuellesspeedBlock:speedBlock){
             aktuellesspeedBlock.drawing();
-            aktuellesspeedBlock.act(speed);
+            aktuellesspeedBlock.bewegeSpeedway(speed);
 
         }
         for(int i =0; i< speedBlock.size() ;i++){
@@ -191,7 +191,7 @@ public class Modell {
             if(aktuellesspeedBlock.kollision(Spieler)){
                 speed = 10;
                 AutoInterval = 250;
-                aktuellesspeedBlock.reingefahren = true;
+                aktuellesspeedBlock.setReingefahren(true);
             }
         }
 
@@ -199,7 +199,7 @@ public class Modell {
         //Herzen
         for(Herz aktuellesHerz:herz){
             aktuellesHerz.drawing();
-            aktuellesHerz.act(speed);
+            aktuellesHerz.bewegeHerz(speed);
         }
         for(int i =0; i< herz.size() ;i++){
             Herz aktuellesHerz = herz.get(i);
@@ -212,7 +212,7 @@ public class Modell {
         //Münzen
         for(Muenzen aktuellesMuenze:muenze){
             aktuellesMuenze.drawing();
-            aktuellesMuenze.act(speed);
+            aktuellesMuenze.bewegeMuenzen(speed);
         }
         for(int i =0; i< muenze.size() ;i++){
             Muenzen aktuellesMuenze = muenze.get(i);
@@ -225,7 +225,7 @@ public class Modell {
         //Tools
         for(Schraubenschluessel aktuellesTool:Tool){
             aktuellesTool.drawing();
-            aktuellesTool.act(speed);
+            aktuellesTool.bewegeSchraubenschluessel(speed);
         }
         for(int i =0; i< Tool.size() ;i++){
             Schraubenschluessel aktuellesTool = Tool.get(i);

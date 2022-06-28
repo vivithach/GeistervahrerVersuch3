@@ -43,7 +43,7 @@ public class Spielelement {
         this.höhe = höhe;
     }
 
-    public boolean kollision(Auto Spieler){
+    public boolean kollision(SpielerAuto Spieler){
         boolean KollisionX = (getPosX() >= Spieler.getPosX() || (getPosX()+breite) >= Spieler.getPosX()) && (getPosX() <= (Spieler.getPosX()+breite) || (getPosX()+breite) <= (Spieler.getPosX()+breite));
         boolean KollisionY = (getPosY() >= Spieler.getPosY() || (getPosY()+höhe) >= Spieler.getPosY()) && (getPosY() <= (Spieler.getPosY()+höhe) || (getPosY()+höhe) <= (Spieler.getPosY()+höhe));
         return (KollisionX && KollisionY);

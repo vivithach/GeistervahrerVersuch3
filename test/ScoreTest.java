@@ -1,17 +1,17 @@
-import junit.framework.TestCase;
-import org.junit.Assert;
+import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 import processing.core.PApplet;
 
-public class ScoreTest  extends TestCase {
+public class ScoreTest{
 
     private PApplet app;
 
     @Test
-    public void testErhöheScore() {
-        Score s = new Score(app);
-        s.erhöheScore();
-        Assert.assertEquals(1, s.getScore());
-
+    public void erhoeheScoreTest() {
+        Score testScore = new Score(app);
+        testScore.setScore(1);
+        int startScore = testScore.getScore();
+        testScore.erhöheScore();
+        assertEquals(startScore+1, testScore.getScore());
     }
 }

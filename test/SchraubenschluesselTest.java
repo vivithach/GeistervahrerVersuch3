@@ -4,10 +4,12 @@ import processing.core.PApplet;
 
 public class SchraubenschluesselTest {
     @Test
-    public void actTest() {
+    public void bewegeSchraubenschluesselTest() {
         Schraubenschluessel testSchraubenschluessel = new Schraubenschluessel(new PApplet());
         testSchraubenschluessel.setPosY(100);
-        testSchraubenschluessel.act(2);
-        assertEquals(testSchraubenschluessel.getPosY(),110);
+        int startPosY = testSchraubenschluessel.getPosY();
+        int bewegeUm = 2;
+        testSchraubenschluessel.bewegeSchraubenschluessel(bewegeUm);
+        assertEquals(startPosY+bewegeUm*5,testSchraubenschluessel.getPosY());
     }
 }

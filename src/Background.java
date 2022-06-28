@@ -22,7 +22,7 @@ public class Background extends Spielelement {
         setPosY_hintergrundBild2(600);
     }
 
-    void drawing() {
+    public void drawing() {
         if(hintergrundBild1==null && hintergrundBild2 == null){
             hintergrundBild1 = app.loadImage(HintergrundBildAdresse);
             hintergrundBild2 = app.loadImage(HintergrundBildAdresse);
@@ -31,7 +31,7 @@ public class Background extends Spielelement {
         app.image(hintergrundBild2, PosX_hintergrundBild2, PosY_hintergrundBild2, app.width, app.height);
     }
 
-    void bewegeHintergrund(int speed) {
+    public void bewegeHintergrund(int speed) {
         PosY_hintergrundBild1 = PosY_hintergrundBild1 + speed;
         PosY_hintergrundBild2 = PosY_hintergrundBild2 + speed;
 

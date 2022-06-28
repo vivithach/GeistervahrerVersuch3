@@ -1,7 +1,7 @@
 import processing.core.PApplet;
 import processing.core.PImage;
 
-public class Auto extends Spielelement {
+public class SpielerAuto extends Spielelement {
     private String BildAdresse = "data/Spieler.png";
     private PImage Bild = null;
     
@@ -11,7 +11,7 @@ public class Auto extends Spielelement {
 
     private boolean steuerungIstVerkehrt;
 
-    Auto(PApplet app){
+    SpielerAuto(PApplet app){
         super(app);
         setPosX(265);
         setPosY(450);

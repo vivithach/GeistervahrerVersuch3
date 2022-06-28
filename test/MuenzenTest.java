@@ -4,10 +4,12 @@ import processing.core.PApplet;
 
 public class MuenzenTest {
     @Test
-    public void actTest() {
+    public void bewegeMuenzenTest() {
         Muenzen testMuenzen = new Muenzen(new PApplet());
         testMuenzen.setPosY(100);
-        testMuenzen.act(2);
-        assertEquals(testMuenzen.getPosY(),102);
+        int startPosY = testMuenzen.getPosY();
+        int bewegeUm = 2;
+        testMuenzen.bewegeMuenzen(bewegeUm);
+        assertEquals(startPosY+bewegeUm,testMuenzen.getPosY());
     }
 }

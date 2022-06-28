@@ -100,7 +100,7 @@ public class ModellTest{
 
         Speedway aktuellerSpeedway1 = testModell.speedBlock.get(0);
         aktuellerSpeedway1.setPosY(1800);
-        aktuellerSpeedway1.reingefahren = true;
+        aktuellerSpeedway1.setReingefahren(true);
         testModell.SpeedwayDeleter();
 
         assertEquals(1,testModell.speedBlock.size());

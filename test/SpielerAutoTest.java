@@ -2,13 +2,13 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 import processing.core.PApplet;
 
-public class AutoTest{
+public class SpielerAutoTest {
 
     private PApplet app;
 
     @Test
     public void bewegeAutoNachLinksTest() {
-        Auto testAuto = new Auto(app);
+        SpielerAuto testAuto = new SpielerAuto(app);
         int startPosition = testAuto.getPosX();
         testAuto.setPosX(startPosition);
         testAuto.bewegeAutoNachLinks();
@@ -17,7 +17,7 @@ public class AutoTest{
 
     @Test
     public void bewegeAutoNachLinksMitVerkehrterSteuerungTest() {
-        Auto testAuto = new Auto(app);
+        SpielerAuto testAuto = new SpielerAuto(app);
         int startPosition = testAuto.getPosX();
         testAuto.setPosX(startPosition);
         testAuto.aendereSteuerung();
@@ -27,7 +27,7 @@ public class AutoTest{
 
     @Test
     public void bewegeAutoNachRechtsTest() {
-        Auto testAuto = new Auto(app);
+        SpielerAuto testAuto = new SpielerAuto(app);
         int startPosition = testAuto.getPosX();
         testAuto.setPosX(startPosition);
         testAuto.bewegeAutoNachRechts();
@@ -36,7 +36,7 @@ public class AutoTest{
 
     @Test
     public void bewegeAutoNachRechtsMitVerkehrterSteuerungTest() {
-        Auto testAuto = new Auto(app);
+        SpielerAuto testAuto = new SpielerAuto(app);
         int startPosition = testAuto.getPosX();
         testAuto.setPosX(startPosition);
 
@@ -47,7 +47,7 @@ public class AutoTest{
 
     @Test
     public void bewegeNachLinksRandTest() {
-        Auto testAuto = new Auto(app);
+        SpielerAuto testAuto = new SpielerAuto(app);
         testAuto.setPosX(testAuto.getBegrenzungLinks());
         int startPosition = testAuto.getPosX();
         testAuto.bewegeAutoNachLinks();
@@ -56,7 +56,7 @@ public class AutoTest{
 
     @Test
     public void bewegeNachLinksRandTestMitAbstand() {
-        Auto testAuto = new Auto(app);
+        SpielerAuto testAuto = new SpielerAuto(app);
         testAuto.setPosX(testAuto.getBegrenzungLinks()+3);
         testAuto.bewegeAutoNachLinks();
         assertEquals(testAuto.getPosX(),testAuto.getBegrenzungLinks());
@@ -64,7 +64,7 @@ public class AutoTest{
 
     @Test
     public void bewegeNachRechtsRandTest() {
-        Auto testAuto = new Auto(app);
+        SpielerAuto testAuto = new SpielerAuto(app);
         testAuto.setPosX(testAuto.getBegrenzungRechts());
         int startPosition = testAuto.getPosX();
         testAuto.bewegeAutoNachRechts();
@@ -73,7 +73,7 @@ public class AutoTest{
 
     @Test
     public void bewegeNachRechtsRandTestMitAbstand() {
-        Auto testAuto = new Auto(app);
+        SpielerAuto testAuto = new SpielerAuto(app);
         testAuto.setPosX(testAuto.getBegrenzungRechts()-3);
         testAuto.bewegeAutoNachRechts();
         assertEquals(testAuto.getPosX(),testAuto.getBegrenzungRechts());
@@ -81,7 +81,7 @@ public class AutoTest{
 
     @Test
     public void andereRichtungAufVerkehrtherumTest() {
-        Auto testAuto = new Auto(app);
+        SpielerAuto testAuto = new SpielerAuto(app);
         testAuto.setSteuerungIstVerkehrt(false);
         testAuto.aendereSteuerung();
         assertEquals(testAuto.isSteuerungIstVerkehrt(),true);
@@ -89,7 +89,7 @@ public class AutoTest{
 
     @Test
     public void andereRichtungAufRichtigherumTest() {
-        Auto testAuto = new Auto(app);
+        SpielerAuto testAuto = new SpielerAuto(app);
         testAuto.setSteuerungIstVerkehrt(true);
         testAuto.aendereSteuerung();
         assertEquals(testAuto.isSteuerungIstVerkehrt(),false);

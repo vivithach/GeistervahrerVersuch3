@@ -1,18 +1,17 @@
 import processing.core.PApplet;
 import processing.core.PImage;
-
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
 public class Speedway extends Spielelement{
-    String image_pathrain = "data/rainbow.png";
-    PImage rain;
-    private boolean geladen = false;
+    private String BildAdresse = "data/rainbow.png";
+    private PImage BildSpeedway = null;
+
     List<Integer> X_POSITIONEN_DER_SPUREN = Arrays.asList(15,135,255,375,495);
     Random rand = new Random();
 
-    boolean reingefahren = false;
+    private boolean reingefahren = false;
 
     Speedway(PApplet app){
         super(app);
@@ -23,18 +22,22 @@ public class Speedway extends Spielelement{
     }
 
 
-    void drawing(){
-        if(geladen == false){
-            rain = app.loadImage(image_pathrain);
-            geladen = true;
+    public void drawing(){
+        if(BildSpeedway == null){
+            BildSpeedway = app.loadImage(BildAdresse);
         }
-        app.image(rain,getPosX(),getPosY(),getBreite(),getHöhe());
-
+        app.image(BildSpeedway,getPosX(),getPosY(),getBreite(),getHöhe());
     }
 
-    void act(int speed){
+    public void bewegeSpeedway(int speed){
         setPosY(getPosY()+speed);
     }
 
+    public boolean isReingefahren() {
+        return reingefahren;
+    }
 
+    public void setReingefahren(boolean reingefahren) {
+        this.reingefahren = reingefahren;
+    }
 }

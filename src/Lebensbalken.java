@@ -10,31 +10,34 @@ public class Lebensbalken extends Spielelement {
         Leben = 250;
     }
 
-    public void minusLeben() {
-        Leben -= 1;
-    }
-
-    public void plusLeben() {
-        if (Leben < 250)
-            Leben += 50;
-        if (Leben > 250) {
-            Leben = 250;
-        }
-    }
-
     public void drawing() {
         app.stroke(255);
         app.strokeWeight(10);
         app.line(getPosX(), getPosY(), Leben, getPosY());
     }
 
+    public void minusLeben() {
+        if(Leben > 0) {
+            Leben -= 1;
+        }
+        if(Leben <= 0){
+            Leben = 0;
+        }
+    }
+
+    public void plusLeben() {
+        if (Leben < 250) {
+            Leben += 50;
+        }
+        if (Leben > 250) {
+            Leben = 250;
+        }
+    }
     public int getLeben() {
         return Leben;
     }
 
-    //nur für Testmethode benötigt
     public void setLeben(int leben) {
         Leben = leben;
     }
-
 }

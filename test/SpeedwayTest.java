@@ -7,8 +7,10 @@ public class SpeedwayTest {
     public void actTest() {
         Speedway testSpeedway = new Speedway(new PApplet());
         testSpeedway.setPosY(100);
-        testSpeedway.act(2);
-        assertEquals(testSpeedway.getPosY(),102);
+        int startPosY = testSpeedway.getPosY();
+        int bewegeUm = 2;
+        testSpeedway.bewegeSpeedway(bewegeUm);
+        assertEquals(startPosY+bewegeUm,testSpeedway.getPosY());
     }
 }
 

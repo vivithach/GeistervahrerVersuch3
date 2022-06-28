@@ -11,13 +11,13 @@ public class Score extends Spielelement{
         setPosY(50);
     }
 
-    void drawing(){
+    public void drawing(){
         app.stroke(255);
         app.textSize(20);
         app.text("Score: "+ this.score, getPosX(), getPosY());
     }
 
-    void erhöheScore(){
+    public void erhöheScore(){
         score += 1;
     }
 
