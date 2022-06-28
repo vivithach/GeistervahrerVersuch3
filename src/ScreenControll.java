@@ -17,14 +17,15 @@ public class ScreenControll {
         app.textSize(15);
         app.text("Click to start", app.width/2, app.height-30);
     }
-    void gameOverScreen() {
+    void gameOverScreen(int Score) {
         app.background(44, 62, 80);
         app.textAlign(app.CENTER);
         app.fill(236, 240, 241);
-        app.textSize(12);
-        app.text("Your Score", app.width/2, app.height/2 - 120);
-        app.textSize(130);
-        app.textSize(15);
-        app.text("Click to Restart", app.width/2, app.height-30);
+        app.textSize(75);
+        app.text("Game Over!", app.width/2, app.height/2 -75);
+        app.textSize(25);
+        app.text("Your Score", app.width/2, app.height/2 );
+        app.textSize(100);
+        app.text(Score,app.width/2, app.height/2 + 120);
     }
 }

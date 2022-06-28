@@ -20,7 +20,7 @@ public class Spiel extends PApplet {
             modell.RUN();
             steuerungSpielerAuto();
         } else if (modell.gameScreen == GameScreen.GAMEOVER_SCREEN) {
-            modell.Screen.initScreen();
+            modell.Screen.gameOverScreen(modell.score.getScore());
         }
     }
 
@@ -37,14 +37,13 @@ public class Spiel extends PApplet {
     }
 
 
-
     public void mousePressed() {
         if (modell.gameScreen==GameScreen.START_SCREEN) {
             modell.startGame();
         }
-        if (modell.gameScreen==GameScreen.GAMEOVER_SCREEN) {
-            //restart();
-        }
+//        if (modell.gameScreen==GameScreen.GAMEOVER_SCREEN) {
+//            //restart();
+//        }
     }
 
 

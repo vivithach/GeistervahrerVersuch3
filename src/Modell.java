@@ -1,5 +1,4 @@
 import processing.core.PApplet;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -12,7 +11,7 @@ public class Modell {
     private float lastAddTime;
     private Background background;
     private Lebensbalken Leben;
-    private Score score;
+    Score score;
     private PApplet app;
 
     SpielerAuto Spieler;
@@ -46,11 +45,11 @@ public class Modell {
     }
 
     
-    void startGame() {
+    public void startGame() {
         gameScreen=GameScreen.GAME_SCREEN;
     }
 
-    void gameOver() {
+    public void gameOver() {
         gameScreen=GameScreen.GAMEOVER_SCREEN;
     }
 
@@ -109,7 +108,7 @@ public class Modell {
         }
     }
 
-    private void ueberpruefeKollisionMitHerzItem() {
+    public void ueberpruefeKollisionMitHerzItem() {
         for(int i = 0; i< HerzItems.size() ; i++){
             Herz aktuellesHerz = HerzItems.get(i);
             if(aktuellesHerz.kollision(Spieler)){
@@ -134,7 +133,7 @@ public class Modell {
         }
     }
 
-    private void ueberpruefeKollisionMitMuenzItem() {
+    public void ueberpruefeKollisionMitMuenzItem() {
         for(int i = 0; i< MuenzItems.size() ; i++){
             Muenzen aktuellesMuenze = MuenzItems.get(i);
             if(aktuellesMuenze.kollision(Spieler)){
@@ -166,7 +165,7 @@ public class Modell {
     }
     
 
-    private void ueberprüfeKollisionMitSpeedwayItem() {
+    public void ueberprüfeKollisionMitSpeedwayItem() {
         for(int i = 0; i< SpeedwayItems.size() ; i++){
             Speedway aktuellesspeedBlock = SpeedwayItems.get(i);
             if(aktuellesspeedBlock.kollision(Spieler)){
@@ -273,13 +272,13 @@ public class Modell {
         background.bewegeHintergrund(SpielGeschwindigkeit);
     }
 
-    public Score getScore() {
-        return score;
-    }
-
-    public void setScore(Score score) {
-        this.score = score;
-    }
+//    public int getScore() {
+//        return score;
+//    }
+//
+//    public void setScore(Score score) {
+//        this.score = score;
+//    }
 
     public int getSpielGeschwindigkeit() {
         return SpielGeschwindigkeit;
