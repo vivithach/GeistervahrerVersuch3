@@ -8,7 +8,7 @@ import java.util.Random;
 public class GegenAuto extends Spielelement{
     String image_path2 = "data/Gegner.png";
     PImage Gegner;
-
+    private boolean geladen = false;
 
     List<Integer> X_POSITIONEN_DER_SPUREN = Arrays.asList(25,145, 265, 385, 505);
     Random rand = new Random();
@@ -16,16 +16,19 @@ public class GegenAuto extends Spielelement{
 
     GegenAuto(PApplet app){
         super(app);
-        Gegner = app.loadImage(image_path2);
         setPosX(X_POSITIONEN_DER_SPUREN.get(rand.nextInt(X_POSITIONEN_DER_SPUREN.size())));
         setPosY(-400);
         setBreite(60);
         setHöhe(100);
-
     }
 
 
     void drawing(){
+
+        if(geladen == false){
+            Gegner = app.loadImage(image_path2);
+            geladen = true;
+        }
         app.image(Gegner,getPosX(),getPosY(),getBreite(),getHöhe());
     }
 

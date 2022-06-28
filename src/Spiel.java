@@ -25,7 +25,7 @@ public class Spiel extends PApplet {
             modell.RUN();
             steuerungSpielerAuto();
         } else if (modell.gameScreen == GameScreen.GAMEOVER_SCREEN) {
-            //modell.Screen.gameOverScreen(modell.getScore());
+            modell.Screen.initScreen();
         }
     }
 

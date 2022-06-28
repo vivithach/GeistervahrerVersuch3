@@ -5,11 +5,16 @@ public class Auto extends Spielelement {
     String image_path1 = "data/Spieler.png";
     PImage Auto;
 
+    private boolean geladen = false;
+
+    private int bewegung = 8;
+    private int randLinks = 25;
+    private int randRechts = 515;
+
     boolean verkehrtherum = false;
 
     Auto(PApplet app){
         super(app);
-        Auto = app.loadImage(image_path1);
         setPosX(265);
         setPosY(450);
         setBreite(60);
@@ -18,25 +23,30 @@ public class Auto extends Spielelement {
 
 
     public void drawing(){
+
+        if(geladen == false){
+            Auto = app.loadImage(image_path1);
+            geladen = true;
+        }
         app.image(Auto,getPosX(),getPosY(),getBreite(),getHöhe());
     }
 
 
     public void bewegeLinks(){
         if(verkehrtherum){
-            if (getPosX()+8 > 515){
-                setPosX(515);
+            if (getPosX()+bewegung >= randRechts){
+                setPosX(randRechts);
             }
             else{
-                setPosX(getPosX()+8);
+                setPosX(getPosX()+bewegung);
             }
         }
         else{
-            if(getPosX()-8 < 25){
-                setPosX(25);
+            if(getPosX()-bewegung <= randLinks){
+                setPosX(randLinks);
             }
             else{
-                setPosX(getPosX()-8);
+                setPosX(getPosX()-bewegung);
             }
         }
     }
@@ -44,19 +54,19 @@ public class Auto extends Spielelement {
 
     public void bewegeRechts(){
         if(verkehrtherum){
-            if(getPosX()-8 < 25){
-                setPosX(25);
+            if(getPosX()-bewegung <= randLinks){
+                setPosX(randLinks);
             }
             else{
-                setPosX(getPosX()-8);
+                setPosX(getPosX()-bewegung);
             }
         }
         else{
-            if (getPosX() > 515){
-                setPosX(515);
+            if (getPosX() + bewegung >= randRechts){
+                setPosX(randRechts);
             }
             else{
-                setPosX(getPosX()+8);
+                setPosX(getPosX()+bewegung);
             }
         }
     }
@@ -69,5 +79,17 @@ public class Auto extends Spielelement {
         else{
             verkehrtherum = true;
         }
+    }
+
+    public int getBewegung() {
+        return bewegung;
+    }
+
+    public int getRandLinks() {
+        return randLinks;
+    }
+
+    public int getRandRechts() {
+        return randRechts;
     }
 }

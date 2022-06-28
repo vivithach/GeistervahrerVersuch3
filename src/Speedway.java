@@ -8,7 +8,7 @@ import java.util.Random;
 public class Speedway extends Spielelement{
     String image_pathrain = "data/rainbow.png";
     PImage rain;
-
+    private boolean geladen = false;
     List<Integer> X_POSITIONEN_DER_SPUREN = Arrays.asList(15,135,255,375,495);
     Random rand = new Random();
 
@@ -16,7 +16,7 @@ public class Speedway extends Spielelement{
 
     Speedway(PApplet app){
         super(app);
-        rain = app.loadImage(image_pathrain);
+
         setPosX(X_POSITIONEN_DER_SPUREN.get(rand.nextInt(X_POSITIONEN_DER_SPUREN.size())));
         setPosY(-100);
         setBreite(90);
@@ -25,6 +25,10 @@ public class Speedway extends Spielelement{
 
 
     void drawing(){
+        if(geladen == false){
+            rain = app.loadImage(image_pathrain);
+            geladen = true;
+        }
         app.image(rain,getPosX(),getPosY(),getBreite(),getHöhe());
 
     }

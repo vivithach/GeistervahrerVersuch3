@@ -8,7 +8,7 @@ import java.util.Random;
 public class Schraubenschluessel extends Spielelement{
     String image_pathTool = "data/Schraubenschlüssel.png";
     PImage tool;
-
+    private boolean geladen = false;
     List<Integer> X_POSITIONEN_DER_SPUREN = Arrays.asList(15,135,255,375,495);
     Random rand = new Random();
 
@@ -17,7 +17,7 @@ public class Schraubenschluessel extends Spielelement{
 
     Schraubenschluessel(PApplet app){
         super(app);
-        tool = app.loadImage(image_pathTool);
+
         setPosX(X_POSITIONEN_DER_SPUREN.get(rand.nextInt(X_POSITIONEN_DER_SPUREN.size())));
         setPosY(-100);
         setBreite(90);
@@ -26,6 +26,11 @@ public class Schraubenschluessel extends Spielelement{
 
 
     public void drawing(){
+        if(geladen == false){
+            tool = app.loadImage(image_pathTool);
+            geladen = true;
+        }
+
         app.image(tool,getPosX(),getPosY(),getBreite(),getHöhe());
 
     }

@@ -14,7 +14,7 @@ public class Modell {
 
     private Background background;
     Auto Spieler;
-    private ArrayList<GegenAuto> Gegner;
+    ArrayList<GegenAuto> Gegner;
     private Lebensbalken Leben;
     GameScreen gameScreen;
     ScreenControll Screen;

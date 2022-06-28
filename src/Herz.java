@@ -8,13 +8,13 @@ import java.util.Random;
 public class Herz extends Spielelement{
     String image_pathherz = "data/heart.png";
     PImage herz;
-
+    private boolean geladen = false;
     List<Integer> X_POSITIONEN_DER_SPUREN = Arrays.asList(40,160,280,400,520);
     Random rand = new Random();
 
     Herz(PApplet app){
         super(app);
-        herz = app.loadImage(image_pathherz);
+
 
         setPosX(X_POSITIONEN_DER_SPUREN.get(rand.nextInt(X_POSITIONEN_DER_SPUREN.size())));
         setPosY(-500);
@@ -24,6 +24,11 @@ public class Herz extends Spielelement{
 
 
     void drawing(){
+        if(geladen == false){
+            herz = app.loadImage(image_pathherz);
+            geladen = true;
+        }
+
         app.image(herz,getPosX(),getPosY(),getBreite(),getHöhe());
 
     }
