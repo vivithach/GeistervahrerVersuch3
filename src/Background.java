@@ -2,44 +2,77 @@ import processing.core.PApplet;
 import processing.core.PImage;
 
 public class Background extends Spielelement {
-    String image_path = "data/Hintergrund.png";
+    private String HintergrundBildAdresse = "data/Hintergrund.png";
 
-    PImage background1;
-    PImage background2;
-    private boolean geladen = false;
-    private int background1_x = 0;
-    private int background1_y = 0;
+    private PImage hintergrundBild1 = null;
+    private PImage hintergrundBild2 = null;
 
-    private int background2_x = 0;
-    private int background2_y = 600;
+    private int PosX_hintergrundBild1;
+    private int PosY_hintergrundBild1;
+
+    private int PosX_hintergrundBild2;
+    private int PosY_hintergrundBild2;
+
 
     Background(PApplet app) {
         super(app);
-
+        setPosX_hintergrundBild1(0);
+        setPosX_hintergrundBild2(0);
+        setPosY_hintergrundBild1(0);
+        setPosY_hintergrundBild2(600);
     }
 
     void drawing() {
-        if(geladen == false){
-            background1 = app.loadImage(image_path);
-            background2 = app.loadImage(image_path);
-            geladen = true;
+        if(hintergrundBild1==null && hintergrundBild2 == null){
+            hintergrundBild1 = app.loadImage(HintergrundBildAdresse);
+            hintergrundBild2 = app.loadImage(HintergrundBildAdresse);
         }
-
-        app.image(background1, background1_x, background1_y, app.width, app.height);
-        app.image(background2, background2_x, background2_y, app.width, app.height);
+        app.image(hintergrundBild1, PosX_hintergrundBild1, PosY_hintergrundBild1, app.width, app.height);
+        app.image(hintergrundBild2, PosX_hintergrundBild2, PosY_hintergrundBild2, app.width, app.height);
     }
 
     void act(int speed) {
-        background1_y = background1_y + speed;
-        background2_y = background2_y + speed;
+        PosY_hintergrundBild1 = PosY_hintergrundBild1 + speed;
+        PosY_hintergrundBild2 = PosY_hintergrundBild2 + speed;
 
-        if (background1_y >= 600) {
-            background1_y = -600;
+        if (PosY_hintergrundBild1 >= 600) {
+            PosY_hintergrundBild1 = -600;
         }
-        if (background2_y >= 600) {
-            background2_y = -600;
+        if (PosY_hintergrundBild2 >= 600) {
+            PosY_hintergrundBild2 = -600;
         }
+    }
 
+    public int getPosX_hintergrundBild1() {
+        return PosX_hintergrundBild1;
+    }
+
+    public void setPosX_hintergrundBild1(int posX_hintergrundBild1) {
+        PosX_hintergrundBild1 = posX_hintergrundBild1;
+    }
+
+    public int getPosY_hintergrundBild1() {
+        return PosY_hintergrundBild1;
+    }
+
+    public void setPosY_hintergrundBild1(int posY_hintergrundBild1) {
+        PosY_hintergrundBild1 = posY_hintergrundBild1;
+    }
+
+    public int getPosX_hintergrundBild2() {
+        return PosX_hintergrundBild2;
+    }
+
+    public void setPosX_hintergrundBild2(int posX_hintergrundBild2) {
+        PosX_hintergrundBild2 = posX_hintergrundBild2;
+    }
+
+    public int getPosY_hintergrundBild2() {
+        return PosY_hintergrundBild2;
+    }
+
+    public void setPosY_hintergrundBild2(int posY_hintergrundBild2) {
+        PosY_hintergrundBild2 = posY_hintergrundBild2;
     }
 }
 
