@@ -2,15 +2,14 @@ import processing.core.PApplet;
 import processing.core.PImage;
 
 public class Auto extends Spielelement {
-    String image_path1 = "data/Spieler.png";
-    PImage Bild = null;
-
-
+    private String BildAdresse = "data/Spieler.png";
+    private PImage Bild = null;
+    
     private int bewegung = 8;
-    private int randLinks = 25;
-    private int randRechts = 515;
+    private int begrenzungLinks = 25;
+    private int begrenzungRechts = 515;
 
-    boolean verkehrtherum = false;
+    private boolean steuerungIstVerkehrt;
 
     Auto(PApplet app){
         super(app);
@@ -18,64 +17,58 @@ public class Auto extends Spielelement {
         setPosY(450);
         setBreite(60);
         setHöhe(100);
+        setSteuerungIstVerkehrt(false);
     }
 
-
     public void drawing(){
-
         if(Bild == null){
-            Bild = app.loadImage(image_path1);
+            Bild = app.loadImage(BildAdresse);
         }
         app.image(Bild,getPosX(),getPosY(),getBreite(),getHöhe());
     }
 
-
-    public void bewegeLinks(){
-        if(verkehrtherum){
-            if (getPosX()+bewegung >= randRechts){
-                setPosX(randRechts);
-            }
-            else{
-                setPosX(getPosX()+bewegung);
-            }
+    public void bewegeAutoNachLinks(){
+        if(isSteuerungIstVerkehrt()){
+            bewegeNachRechts();
         }
         else{
-            if(getPosX()-bewegung <= randLinks){
-                setPosX(randLinks);
-            }
-            else{
-                setPosX(getPosX()-bewegung);
-            }
+            bewegeNachLinks();
         }
     }
 
-
-    public void bewegeRechts(){
-        if(verkehrtherum){
-            if(getPosX()-bewegung <= randLinks){
-                setPosX(randLinks);
-            }
-            else{
-                setPosX(getPosX()-bewegung);
-            }
+    public void bewegeAutoNachRechts(){
+        if(isSteuerungIstVerkehrt()){
+            bewegeNachLinks();
         }
         else{
-            if (getPosX() + bewegung >= randRechts){
-                setPosX(randRechts);
-            }
-            else{
-                setPosX(getPosX()+bewegung);
-            }
+            bewegeNachRechts();
         }
     }
 
-
-    public void aendereRichtung(){
-        if(verkehrtherum){
-            verkehrtherum = false;
+    private void bewegeNachLinks() {
+        if(getPosX()-bewegung <= begrenzungLinks){
+            setPosX(begrenzungLinks);
         }
         else{
-            verkehrtherum = true;
+            setPosX(getPosX()-bewegung);
+        }
+    }
+
+    private void bewegeNachRechts() {
+        if (getPosX()+bewegung >= begrenzungRechts){
+            setPosX(begrenzungRechts);
+        }
+        else{
+            setPosX(getPosX()+bewegung);
+        }
+    }
+
+    public void aendereSteuerung(){
+        if(isSteuerungIstVerkehrt()){
+            setSteuerungIstVerkehrt(false);
+        }
+        else{
+            setSteuerungIstVerkehrt(true);
         }
     }
 
@@ -83,11 +76,19 @@ public class Auto extends Spielelement {
         return bewegung;
     }
 
-    public int getRandLinks() {
-        return randLinks;
+    public int getBegrenzungLinks() {
+        return begrenzungLinks;
     }
 
-    public int getRandRechts() {
-        return randRechts;
+    public int getBegrenzungRechts() {
+        return begrenzungRechts;
+    }
+
+    public boolean isSteuerungIstVerkehrt() {
+        return steuerungIstVerkehrt;
+    }
+
+    public void setSteuerungIstVerkehrt(boolean steuerungIstVerkehrt) {
+        this.steuerungIstVerkehrt = steuerungIstVerkehrt;
     }
 }

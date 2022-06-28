@@ -232,7 +232,7 @@ public class Modell {
             if(aktuellesTool.kollision(Spieler)){
                 Tool.remove(i);
                 //ändere Richtung
-                Spieler.aendereRichtung();
+                Spieler.aendereSteuerung();
             }
         }
 

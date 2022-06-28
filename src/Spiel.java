@@ -27,11 +27,11 @@ public class Spiel extends PApplet {
     void steuerungSpielerAuto() {
         if (keyPressed) {
             if (key == 'a' || keyCode == LEFT) {
-                modell.Spieler.bewegeLinks();
+                modell.Spieler.bewegeAutoNachLinks();
             }
             else if ((key == 'b' || keyCode == RIGHT))
             {
-                modell.Spieler.bewegeRechts();
+                modell.Spieler.bewegeAutoNachRechts();
             }
         }
     }

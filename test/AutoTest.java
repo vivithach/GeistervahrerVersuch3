@@ -11,17 +11,17 @@ public class AutoTest{
         Auto testAuto = new Auto(app);
         int startPosition = testAuto.getPosX();
         testAuto.setPosX(startPosition);
-        testAuto.bewegeLinks();
+        testAuto.bewegeAutoNachLinks();
         assertEquals(startPosition-testAuto.getBewegung(),testAuto.getPosX());
     }
 
     @Test
     public void bewegeLinksMitSchlüsselTest() {
         Auto testAuto = new Auto(app);
-        testAuto.aendereRichtung();
+        testAuto.aendereSteuerung();
         int startPosition = testAuto.getPosX();
         testAuto.setPosX(startPosition);
-        testAuto.bewegeLinks();
+        testAuto.bewegeAutoNachLinks();
         assertEquals(startPosition+testAuto.getBewegung(),testAuto.getPosX());
     }
 
@@ -30,55 +30,55 @@ public class AutoTest{
         Auto testAuto = new Auto(app);
         int startPosition = testAuto.getPosX();
         testAuto.setPosX(startPosition);
-        testAuto.bewegeRechts();
+        testAuto.bewegeAutoNachRechts();
         assertEquals(startPosition+testAuto.getBewegung(),testAuto.getPosX());
     }
 
     @Test
     public void bewegeRechtsMitSchlüsselTest() {
         Auto testAuto = new Auto(app);
-        testAuto.aendereRichtung();
+        testAuto.aendereSteuerung();
         int startPosition = testAuto.getPosX();
         testAuto.setPosX(startPosition);
-        testAuto.bewegeRechts();
+        testAuto.bewegeAutoNachRechts();
         assertEquals(startPosition-testAuto.getBewegung(),testAuto.getPosX());
     }
 
     @Test
     public void rechterRandTest() {
         Auto testAuto = new Auto(app);
-        testAuto.setPosX(testAuto.getRandRechts());
+        testAuto.setPosX(testAuto.getBegrenzungRechts());
         int startPosition = testAuto.getPosX();
-        testAuto.bewegeRechts();
+        testAuto.bewegeAutoNachRechts();
         assertEquals(startPosition,testAuto.getPosX());
 
-        testAuto.setPosX(testAuto.getRandRechts()-3);
-        testAuto.bewegeRechts();
-        assertEquals(testAuto.getPosX(),testAuto.getRandRechts());
+        testAuto.setPosX(testAuto.getBegrenzungRechts()-3);
+        testAuto.bewegeAutoNachRechts();
+        assertEquals(testAuto.getPosX(),testAuto.getBegrenzungRechts());
     }
 
     @Test
     public void linkerRandTest() {
         Auto testAuto = new Auto(app);
-        testAuto.setPosX(testAuto.getRandLinks());
+        testAuto.setPosX(testAuto.getBegrenzungLinks());
         int startPosition = testAuto.getPosX();
-        testAuto.bewegeLinks();
+        testAuto.bewegeAutoNachLinks();
         assertEquals(startPosition,testAuto.getPosX());
 
-        testAuto.setPosX(testAuto.getRandRechts()+3);
-        testAuto.bewegeRechts();
-        assertEquals(testAuto.getPosX(),testAuto.getRandRechts());
+        testAuto.setPosX(testAuto.getBegrenzungRechts()+3);
+        testAuto.bewegeAutoNachRechts();
+        assertEquals(testAuto.getPosX(),testAuto.getBegrenzungRechts());
     }
 
     @Test
     public void andereRichtungTest() {
         Auto testAuto = new Auto(app);
-        testAuto.verkehrtherum = false;
-        testAuto.aendereRichtung();
-        assertEquals(testAuto.verkehrtherum,true);
-        testAuto.aendereRichtung();
-        assertEquals(testAuto.verkehrtherum,false);
-        testAuto.aendereRichtung();
-        assertEquals(testAuto.verkehrtherum,true);
+        testAuto.setSteuerungIstVerkehrt(false);
+        testAuto.aendereSteuerung();
+        assertEquals(testAuto.isSteuerungIstVerkehrt(),true);
+        testAuto.aendereSteuerung();
+        assertEquals(testAuto.isSteuerungIstVerkehrt(),false);
+        testAuto.aendereSteuerung();
+        assertEquals(testAuto.isSteuerungIstVerkehrt(),true);
     }
 }
