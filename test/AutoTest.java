@@ -17,4 +17,12 @@ public class AutoTest extends TestCase {
         a.bewegeLinks();
         Assert.assertEquals(25,s.getPosX());
     }
+
+    public void testBewegeRechts() {
+        Auto a = new Auto(app);
+        Spielelement s = new Spielelement(app);
+        s.setPosX(550);
+        a.bewegeLinks();
+        Assert.assertEquals(515,s.getPosX());
+    }
 }

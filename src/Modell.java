@@ -251,8 +251,24 @@ public class Modell {
         this.score = score;
     }
 
-    //nur für Test benötigt.
+    //nur für Tests benötigt.
     public ArrayList<GegenAuto> getGegner() {
         return Gegner;
+    }
+
+    public ArrayList<Herz> getHerz() {
+        return herz;
+    }
+
+    public ArrayList<Muenzen> getMuenze() {
+        return muenze;
+    }
+
+    public ArrayList<Speedway> getSpeedBlock() {
+        return speedBlock;
+    }
+
+    public ArrayList<Schraubenschluessel> getTool() {
+        return Tool;
     }
 }
