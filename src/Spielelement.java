@@ -44,8 +44,8 @@ public class Spielelement {
     }
 
     public boolean kollision(Auto Spieler){
-        boolean KollisionX = (getPosX() >= Spieler.getPosX() || (getPosX()+50) >= Spieler.getPosX()) && (getPosX() <= (Spieler.getPosX()+50) || (getPosX()+50) <= (Spieler.getPosX()+50));
-        boolean KollisionY = (getPosY() >= Spieler.getPosY() || (getPosY()+100) >= Spieler.getPosY()) && (getPosY() <= (Spieler.getPosY()+100) || (getPosY()+100) <= (Spieler.getPosY()+100));
+        boolean KollisionX = (getPosX() >= Spieler.getPosX() || (getPosX()+breite) >= Spieler.getPosX()) && (getPosX() <= (Spieler.getPosX()+breite) || (getPosX()+breite) <= (Spieler.getPosX()+breite));
+        boolean KollisionY = (getPosY() >= Spieler.getPosY() || (getPosY()+höhe) >= Spieler.getPosY()) && (getPosY() <= (Spieler.getPosY()+höhe) || (getPosY()+höhe) <= (Spieler.getPosY()+höhe));
         return (KollisionX && KollisionY);
     }
 }

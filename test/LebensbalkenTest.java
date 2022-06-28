@@ -3,7 +3,6 @@ import org.junit.Assert;
 import org.junit.Test;
 import processing.core.PApplet;
 
-import static org.junit.Assert.*;
 
 public class LebensbalkenTest extends TestCase {
 

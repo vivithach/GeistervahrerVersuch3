@@ -16,7 +16,6 @@ public class Speedway extends Spielelement{
 
     Speedway(PApplet app){
         super(app);
-
         setPosX(X_POSITIONEN_DER_SPUREN.get(rand.nextInt(X_POSITIONEN_DER_SPUREN.size())));
         setPosY(-100);
         setBreite(90);

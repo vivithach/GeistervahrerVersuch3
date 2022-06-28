@@ -125,6 +125,7 @@ public class Modell {
                     AutoInterval = 1000;
                     aktuellesspeedBlock.reingefahren = false;
                 }
+                speedBlock.remove(i);
             }
         }
     }
@@ -258,24 +259,12 @@ public class Modell {
         this.score = score;
     }
 
-    //nur für Tests benötigt.
-    public ArrayList<GegenAuto> getGegner() {
-        return Gegner;
+
+    public int getSpeed() {
+        return speed;
     }
 
-    public ArrayList<Herz> getHerz() {
-        return herz;
-    }
-
-    public ArrayList<Muenzen> getMuenze() {
-        return muenze;
-    }
-
-    public ArrayList<Speedway> getSpeedBlock() {
-        return speedBlock;
-    }
-
-    public ArrayList<Schraubenschluessel> getTool() {
-        return Tool;
+    public void setSpeed(int speed) {
+        this.speed = speed;
     }
 }

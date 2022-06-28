@@ -1,18 +1,10 @@
-import junit.framework.TestCase;
-import org.junit.Assert;
 import org.junit.Test;
 import processing.core.PApplet;
-
-import static java.nio.file.Files.size;
 import static org.junit.Assert.assertEquals;
-import org.junit.Test;
-import processing.core.PApplet;
-
-import java.util.ArrayList;
-
 import static org.junit.Assert.*;
 
 public class ModellTest{
+
     PApplet app;
 
     @Test
@@ -87,6 +79,32 @@ public class ModellTest{
         AktuellesAuto3.setPosY(800);
         testModell.AutoDeleter();
         assertEquals(1,testModell.Gegner.size());
+    }
+
+    @Test
+    public void SpeedwayDeleterTest() {
+        Modell testModell = new Modell(app);
+        testModell.speedBlock.add(new Speedway(app));
+        testModell.speedBlock.add(new Speedway(app));
+        testModell.speedBlock.add(new Speedway(app));
+
+        testModell.setSpeed(10);
+        assertEquals(3,testModell.speedBlock.size());
+
+        Speedway aktuellerSpeedway = testModell.speedBlock.get(0);
+        aktuellerSpeedway.setPosY(1800);
+        testModell.SpeedwayDeleter();
+
+        assertEquals(2,testModell.speedBlock.size());
+        assertNotEquals(2, testModell.getSpeed());
+
+        Speedway aktuellerSpeedway1 = testModell.speedBlock.get(0);
+        aktuellerSpeedway1.setPosY(1800);
+        aktuellerSpeedway1.reingefahren = true;
+        testModell.SpeedwayDeleter();
+
+        assertEquals(1,testModell.speedBlock.size());
+        assertEquals(2, testModell.getSpeed());
     }
 }
 
