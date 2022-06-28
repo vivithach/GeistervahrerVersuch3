@@ -56,18 +56,18 @@ public class ModellTest{
     @Test
     public void AutoDeleterTest() {
         Modell testModell = new Modell(app);
-        testModell.Gegner.add(new GegenAuto(app));
-        testModell.Gegner.add(new GegenAuto(app));
-        testModell.Gegner.add(new GegenAuto(app));
+        testModell.Gegner.add(new GegnerAuto(app));
+        testModell.Gegner.add(new GegnerAuto(app));
+        testModell.Gegner.add(new GegnerAuto(app));
 
         assertEquals(3,testModell.Gegner.size());
 
-        GegenAuto AktuellesAuto = testModell.Gegner.get(0);
+        GegnerAuto AktuellesAuto = testModell.Gegner.get(0);
         AktuellesAuto.setPosY(600);
         testModell.AutoDeleter();
         assertEquals(3,testModell.Gegner.size());
 
-        GegenAuto AktuellesAuto2 = testModell.Gegner.get(0);
+        GegnerAuto AktuellesAuto2 = testModell.Gegner.get(0);
         AktuellesAuto2.setPosY(800);
         testModell.AutoDeleter();
         assertEquals(2,testModell.Gegner.size());
@@ -75,7 +75,7 @@ public class ModellTest{
         testModell.AutoDeleter();
         assertEquals(2,testModell.Gegner.size());
 
-        GegenAuto AktuellesAuto3 = testModell.Gegner.get(0);
+        GegnerAuto AktuellesAuto3 = testModell.Gegner.get(0);
         AktuellesAuto3.setPosY(800);
         testModell.AutoDeleter();
         assertEquals(1,testModell.Gegner.size());

@@ -14,7 +14,7 @@ public class Modell {
 
     private Background background;
     Auto Spieler;
-    ArrayList<GegenAuto> Gegner;
+    ArrayList<GegnerAuto> Gegner;
     private Lebensbalken Leben;
     GameScreen gameScreen;
     ScreenControll Screen;
@@ -67,7 +67,7 @@ public class Modell {
             Random rand = new Random();
 
             for(int i = 0; i < anzahlAutos.get(rand.nextInt(anzahlAutos.size()));i++){
-                Gegner.add(new GegenAuto(app));
+                Gegner.add(new GegnerAuto(app));
             }
 
             //Herzen
@@ -112,7 +112,7 @@ public class Modell {
 
     void AutoDeleter() {
         for (int i = 0; i < Gegner.size(); i++) {
-            GegenAuto AktuellesAuto = Gegner.get(i);
+            GegnerAuto AktuellesAuto = Gegner.get(i);
             if (AktuellesAuto.getPosY() > 700) {
                 Gegner.remove(i);
             }
@@ -238,9 +238,9 @@ public class Modell {
 
 
         //Gegner
-        for(GegenAuto aktuellesAuto:Gegner){
+        for(GegnerAuto aktuellesAuto:Gegner){
             aktuellesAuto.drawing();
-            aktuellesAuto.act(speed);
+            aktuellesAuto.bewegeGegnerAuto(speed);
             if(aktuellesAuto.kollision(Spieler)){
                 Leben.minusLeben();
             }

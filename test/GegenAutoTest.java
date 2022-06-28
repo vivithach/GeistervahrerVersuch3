@@ -6,9 +6,9 @@ public class GegenAutoTest {
 
     @Test
     public void actTest() {
-        GegenAuto testAuto = new GegenAuto(new PApplet());
+        GegnerAuto testAuto = new GegnerAuto(new PApplet());
         testAuto.setPosY(100);
-        testAuto.act(2);
+        testAuto.bewegeGegnerAuto(2);
         assertEquals(testAuto.getPosY(),104);
     }
 }
