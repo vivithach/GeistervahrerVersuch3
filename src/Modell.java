@@ -169,7 +169,7 @@ public class Modell {
 
         //Hintergrund
         background.drawing();
-        background.act(speed);
+        background.bewegeHintergrund(speed);
 
         //Objekt handler
         ObjektAdder();

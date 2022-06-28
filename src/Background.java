@@ -31,13 +31,14 @@ public class Background extends Spielelement {
         app.image(hintergrundBild2, PosX_hintergrundBild2, PosY_hintergrundBild2, app.width, app.height);
     }
 
-    void act(int speed) {
+    void bewegeHintergrund(int speed) {
         PosY_hintergrundBild1 = PosY_hintergrundBild1 + speed;
         PosY_hintergrundBild2 = PosY_hintergrundBild2 + speed;
 
         if (PosY_hintergrundBild1 >= 600) {
             PosY_hintergrundBild1 = -600;
         }
+
         if (PosY_hintergrundBild2 >= 600) {
             PosY_hintergrundBild2 = -600;
         }
