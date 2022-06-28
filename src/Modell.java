@@ -107,51 +107,54 @@ public class Modell {
         }
     }
 
-    void ObjektDeleter(){
-        //Autos
-        for(int i =0; i< Gegner.size() ;i++){
+    void AutoDeleter() {
+        for (int i = 0; i < Gegner.size(); i++) {
             GegenAuto AktuellesAuto = Gegner.get(i);
-            if(AktuellesAuto.getPosY() > 700){
+            if (AktuellesAuto.getPosY() > 700) {
                 Gegner.remove(i);
             }
         }
-        //Herzen
-        for(int i =0; i< herz.size() ;i++){
-            Herz aktuellesHerz = herz.get(i);
-            if(aktuellesHerz.getPosY() > 700){
-                herz.remove(i);
-            }
-        }
-        //Münzen
-        for(int i =0; i< muenze.size() ;i++){
-            Muenzen aktuellesMuenze = muenze.get(i);
-            if(aktuellesMuenze.getPosY()> 700){
-                muenze.remove(i);
-            }
-        }
+    }
 
-        //SpeeWay
-        for(int i =0; i< speedBlock.size() ;i++){
+    void SpeedwayDeleter() {
+        for (int i = 0; i < speedBlock.size(); i++) {
             Speedway aktuellesspeedBlock = speedBlock.get(i);
-            if(aktuellesspeedBlock.getPosY() > 1750){
-                if(aktuellesspeedBlock.reingefahren){
+            if (aktuellesspeedBlock.getPosY() > 1750) {
+                if (aktuellesspeedBlock.reingefahren) {
                     speed = 2;
                     AutoInterval = 1000;
                     aktuellesspeedBlock.reingefahren = false;
                 }
             }
         }
+    }
 
-        //Tools
-        for(int i =0; i< Tool.size() ;i++){
-            Schraubenschluessel aktuellesTool = Tool.get(i);
-            if(aktuellesTool.getPosY() > 700){
-                Tool.remove(i);
+    void HerzDeleter() {
+        for (int i = 0; i < herz.size(); i++) {
+            Herz aktuellesHerz = herz.get(i);
+            if (aktuellesHerz.getPosY() > 700) {
+                herz.remove(i);
             }
         }
     }
 
+    void MuenzDeleter() {
+        for(int i =0; i< muenze.size() ;i++){
+            Muenzen aktuellesMuenze = muenze.get(i);
+            if(aktuellesMuenze.getPosY()> 700){
+                muenze.remove(i);
+            }
+        }
+    }
 
+    void ToolDeleter() {
+        for (int i = 0; i < Tool.size(); i++) {
+            Schraubenschluessel aktuellesTool = Tool.get(i);
+            if (aktuellesTool.getPosY() > 700) {
+                Tool.remove(i);
+            }
+        }
+    }
 
     void RUN(){
 
@@ -166,7 +169,11 @@ public class Modell {
 
         //Objekt handler
         ObjektAdder();
-        ObjektDeleter();
+        AutoDeleter();
+        HerzDeleter();
+        ToolDeleter();
+        MuenzDeleter();
+        SpeedwayDeleter();
 
 
         //SpeedWay

@@ -20,6 +20,8 @@ public class ModellTest extends TestCase {
         m.ObjektDeleter();
         Assert.assertEquals(1, m.getGegner().size());
     }
+
+    @Test
    public void testObjektDeleterHerz() {
        Modell m = new Modell(app);
        ArrayList<Object> Herzen = new ArrayList<>();
@@ -29,6 +31,7 @@ public class ModellTest extends TestCase {
        Assert.assertEquals(1, m.getHerz().size());
     }
 
+    @Test
     public void testObjektDeleterMuenze() {
         Modell m = new Modell(app);
         ArrayList<Object> Muenzen = new ArrayList<>();
@@ -38,6 +41,7 @@ public class ModellTest extends TestCase {
         Assert.assertEquals(1, m.getMuenze().size());
     }
 
+    @Test
     public void testObjektDeleterSpeedblock() {
         Modell m = new Modell(app);
         ArrayList<Object> Speedbloecke = new ArrayList<>();
@@ -47,6 +51,7 @@ public class ModellTest extends TestCase {
         Assert.assertEquals(1, m.getSpeedBlock().size());
     }
 
+    @Test
     public void testObjektDeleterTool() {
         Modell m = new Modell(app);
         ArrayList<Object> Tools = new ArrayList<>();
@@ -55,6 +60,11 @@ public class ModellTest extends TestCase {
         m.ObjektDeleter();
         Assert.assertEquals(1, m.getTool().size());
     }
+
+//    public void testRun(){
+//        Modell m = new Modell(app);
+//        Speedway aktuellesspeedBlock = m.speedBlock.get(i);
+//    }
 
 //    @Test
 //    public void testObjektAdderGegner(){
