@@ -67,8 +67,8 @@ public class Modell {
         return anzahl;
     }
 
-    public void fuegeGegeneAutosHinzu() {
-        for(int i = 0; i < erzeugeAnzahlVonObjekten(1); i++){
+    public void fuegeGegeneAutosHinzu(int anzahlObjekte) {
+        for(int i = 0; i < anzahlObjekte; i++){
             GegenerAutos.add(new GegnerAuto(app));
         }
     }
@@ -93,8 +93,8 @@ public class Modell {
     }
     
 
-    public void feugeHerzItemsHinzu() {
-        if(erzeugeAnzahlVonObjekten(2) == 1){
+    public void feugeHerzItemsHinzu(int anzahlObjekte) {
+        if(anzahlObjekte == 1){
             HerzItems.add(new Herz(app));
         }
     }
@@ -118,8 +118,8 @@ public class Modell {
         }
     }
     
-    public void fuegeMuenzenItemsHinzu() {
-        if(erzeugeAnzahlVonObjekten(2) == 0){
+    public void fuegeMuenzenItemsHinzu(int anzahlObjekte) {
+        if(anzahlObjekte == 0){
             MuenzItems.add(new Muenzen(app));
         }
     }
@@ -144,8 +144,8 @@ public class Modell {
     }
 
     
-    public void fuegeSpeedwayItemsHinzu() {
-        if(erzeugeAnzahlVonObjekten(2) == 1){
+    public void fuegeSpeedwayItemsHinzu(int anzahlObjekte) {
+        if(anzahlObjekte == 1){
             SpeedwayItems.add(new Speedway(app));
         }
     }
@@ -177,8 +177,8 @@ public class Modell {
     }
     
     
-    public void fuegeSchraubenschuesselItemsHinzu() {
-        if(erzeugeAnzahlVonObjekten(2) == 1){
+    public void fuegeSchraubenschuesselItemsHinzu(int anzahlObjekte) {
+        if(anzahlObjekte == 1){
             SchraubenschluesselItems.add(new Schraubenschluessel(app));
         }
     }
@@ -205,11 +205,11 @@ public class Modell {
     
     public void fuegeObjekteHinzu(){
         if (app.millis()-lastAddTime > hinzufruegeIntervall) {
-            fuegeGegeneAutosHinzu();
-            feugeHerzItemsHinzu();
-            fuegeMuenzenItemsHinzu();
-            fuegeSpeedwayItemsHinzu();
-            fuegeSchraubenschuesselItemsHinzu();
+            fuegeGegeneAutosHinzu(erzeugeAnzahlVonObjekten(1));
+            feugeHerzItemsHinzu(erzeugeAnzahlVonObjekten(2));
+            fuegeMuenzenItemsHinzu(erzeugeAnzahlVonObjekten(2));
+            fuegeSpeedwayItemsHinzu(erzeugeAnzahlVonObjekten(2));
+            fuegeSchraubenschuesselItemsHinzu(erzeugeAnzahlVonObjekten(2));
             lastAddTime = app.millis();
         }
     }
@@ -271,14 +271,6 @@ public class Modell {
         background.drawing();
         background.bewegeHintergrund(SpielGeschwindigkeit);
     }
-
-//    public int getScore() {
-//        return score;
-//    }
-//
-//    public void setScore(Score score) {
-//        this.score = score;
-//    }
 
     public int getSpielGeschwindigkeit() {
         return SpielGeschwindigkeit;
