@@ -1,8 +1,8 @@
 import processing.core.PApplet;
 
 public class Spielelement {
-    private int PosX;
-    private int PosY;
+    private int posX;
+    private int posY;
     private int breite;
     private int hoehe;
     protected PApplet app;
@@ -12,19 +12,19 @@ public class Spielelement {
     }
 
     public int getPosX() {
-        return PosX;
+        return posX;
     }
 
     public void setPosX(int posX) {
-        PosX = posX;
+        this.posX = posX;
     }
 
     public int getPosY() {
-        return PosY;
+        return posY;
     }
 
     public void setPosY(int posY) {
-        PosY = posY;
+        this.posY = posY;
     }
 
     public int getBreite() {

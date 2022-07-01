@@ -2,78 +2,78 @@ import processing.core.PApplet;
 import processing.core.PImage;
 
 public class Background extends Spielelement {
-    private String hintergrundBildAdresse = "data/Hintergrund.png";
+    private String hintergrundbildAdresse = "data/Hintergrund.png";
 
-    private PImage hintergrundBild1 = null;
-    private PImage hintergrundBild2 = null;
+    private PImage hintergrundbild1 = null;
+    private PImage hintergrundbild2 = null;
 
-    private int PosX_hintergrundBild1;
-    private int PosY_hintergrundBild1;
+    private int posX_hintergrundBild1;
+    private int PosY_hintergrundbild1;
 
-    private int PosX_hintergrundBild2;
-    private int PosY_hintergrundBild2;
+    private int posX_hintergrundbild2;
+    private int posY_hintergrundbild2;
 
 
     Background(PApplet app) {
         super(app);
         setPosX_hintergrundBild1(0);
-        setPosX_hintergrundBild2(0);
-        setPosY_hintergrundBild1(0);
-        setPosY_hintergrundBild2(600);
+        setPosX_hintergrundbild2(0);
+        setPosY_hintergrundbild1(0);
+        setPosY_hintergrundbild2(600);
     }
 
     public void drawing() {
-        if(hintergrundBild1==null && hintergrundBild2 == null){
-            hintergrundBild1 = app.loadImage(hintergrundBildAdresse);
-            hintergrundBild2 = app.loadImage(hintergrundBildAdresse);
+        if(hintergrundbild1 ==null && hintergrundbild2 == null){
+            hintergrundbild1 = app.loadImage(hintergrundbildAdresse);
+            hintergrundbild2 = app.loadImage(hintergrundbildAdresse);
         }
-        app.image(hintergrundBild1, PosX_hintergrundBild1, PosY_hintergrundBild1, app.width, app.height);
-        app.image(hintergrundBild2, PosX_hintergrundBild2, PosY_hintergrundBild2, app.width, app.height);
+        app.image(hintergrundbild1, posX_hintergrundBild1, PosY_hintergrundbild1, app.width, app.height);
+        app.image(hintergrundbild2, posX_hintergrundbild2, posY_hintergrundbild2, app.width, app.height);
     }
 
     public void bewegeHintergrund(int speed) {
-        PosY_hintergrundBild1 = PosY_hintergrundBild1 + speed;
-        PosY_hintergrundBild2 = PosY_hintergrundBild2 + speed;
+        PosY_hintergrundbild1 = PosY_hintergrundbild1 + speed;
+        posY_hintergrundbild2 = posY_hintergrundbild2 + speed;
 
-        if (PosY_hintergrundBild1 >= 600) {
-            PosY_hintergrundBild1 = -600;
+        if (PosY_hintergrundbild1 >= 600) {
+            PosY_hintergrundbild1 = -600;
         }
 
-        if (PosY_hintergrundBild2 >= 600) {
-            PosY_hintergrundBild2 = -600;
+        if (posY_hintergrundbild2 >= 600) {
+            posY_hintergrundbild2 = -600;
         }
     }
 
     public int getPosX_hintergrundBild1() {
-        return PosX_hintergrundBild1;
+        return posX_hintergrundBild1;
     }
 
     public void setPosX_hintergrundBild1(int posX_hintergrundBild1) {
-        PosX_hintergrundBild1 = posX_hintergrundBild1;
+        this.posX_hintergrundBild1 = posX_hintergrundBild1;
     }
 
-    public int getPosY_hintergrundBild1() {
-        return PosY_hintergrundBild1;
+    public int getPosY_hintergrundbild1() {
+        return PosY_hintergrundbild1;
     }
 
-    public void setPosY_hintergrundBild1(int posY_hintergrundBild1) {
-        PosY_hintergrundBild1 = posY_hintergrundBild1;
+    public void setPosY_hintergrundbild1(int posY_hintergrundbild1) {
+        PosY_hintergrundbild1 = posY_hintergrundbild1;
     }
 
-    public int getPosX_hintergrundBild2() {
-        return PosX_hintergrundBild2;
+    public int getPosX_hintergrundbild2() {
+        return posX_hintergrundbild2;
     }
 
-    public void setPosX_hintergrundBild2(int posX_hintergrundBild2) {
-        PosX_hintergrundBild2 = posX_hintergrundBild2;
+    public void setPosX_hintergrundbild2(int posX_hintergrundbild2) {
+        this.posX_hintergrundbild2 = posX_hintergrundbild2;
     }
 
-    public int getPosY_hintergrundBild2() {
-        return PosY_hintergrundBild2;
+    public int getPosY_hintergrundbild2() {
+        return posY_hintergrundbild2;
     }
 
-    public void setPosY_hintergrundBild2(int posY_hintergrundBild2) {
-        PosY_hintergrundBild2 = posY_hintergrundBild2;
+    public void setPosY_hintergrundbild2(int posY_hintergrundbild2) {
+        this.posY_hintergrundbild2 = posY_hintergrundbild2;
     }
 }
 
