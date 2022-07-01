@@ -8,7 +8,7 @@ public class ScreenControll {
         this.app = app;
     }
 
-    void initScreen() {
+    public void initScreen() {
         app.background(236, 240, 241);
         app.textAlign(app.CENTER);
         app.fill(52, 73, 94);
@@ -17,7 +17,7 @@ public class ScreenControll {
         app.textSize(15);
         app.text("Click to start", app.width/2, app.height-30);
     }
-    void gameOverScreen(int Score) {
+    public void gameOverScreen(int Score) {
         app.background(44, 62, 80);
         app.textAlign(app.CENTER);
         app.fill(236, 240, 241);

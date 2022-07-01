@@ -5,7 +5,7 @@ import processing.core.PApplet;
 public class MuenzenTest {
     @Test
     public void bewegeMuenzenTest() {
-        Muenzen testMuenzen = new Muenzen(new PApplet());
+        Muenzen testMuenzen = new Muenzen(new PApplet(),25);
         testMuenzen.setPosY(100);
         int startPosY = testMuenzen.getPosY();
         int bewegeUm = 2;

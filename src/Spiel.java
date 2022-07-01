@@ -1,10 +1,8 @@
 import processing.core.PApplet;
 
-
 public class Spiel extends PApplet {
 
-    Modell modell;
-
+    private Modell modell;
 
     public void settings() {
         size(600, 600);
@@ -13,25 +11,27 @@ public class Spiel extends PApplet {
     public void setup(){
         modell = new Modell(this);
     }
+
     public void draw(){
+
         if (modell.gameScreen == GameScreen.START_SCREEN) {
-            modell.Screen.initScreen();
+            modell.screen.initScreen();
         } else if (modell.gameScreen == GameScreen.GAME_SCREEN) {
             modell.RUN();
             steuerungSpielerAuto();
         } else if (modell.gameScreen == GameScreen.GAMEOVER_SCREEN) {
-            modell.Screen.gameOverScreen(modell.score.getScore());
+            modell.screen.gameOverScreen(modell.score.getScore());
         }
     }
 
-    void steuerungSpielerAuto() {
+    public void steuerungSpielerAuto() {
         if (keyPressed) {
             if (key == 'a' || keyCode == LEFT) {
-                modell.Spieler.bewegeAutoNachLinks();
+                modell.spieler.bewegeAutoNachLinks();
             }
             else if ((key == 'b' || keyCode == RIGHT))
             {
-                modell.Spieler.bewegeAutoNachRechts();
+                modell.spieler.bewegeAutoNachRechts();
             }
         }
     }
@@ -41,9 +41,6 @@ public class Spiel extends PApplet {
         if (modell.gameScreen==GameScreen.START_SCREEN) {
             modell.startGame();
         }
-//        if (modell.gameScreen==GameScreen.GAMEOVER_SCREEN) {
-//            //restart();
-//        }
     }
 
 

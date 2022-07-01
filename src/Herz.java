@@ -1,19 +1,13 @@
 import processing.core.PApplet;
 import processing.core.PImage;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Random;
 
 public class Herz extends Spielelement{
     private String BildAdresse = "data/heart.png";
     private PImage BildHerz = null;
 
-    private List<Integer> X_POSITIONEN_DER_SPUREN = Arrays.asList(40,160,280,400,520);
-    private Random rand = new Random();
-
-    Herz(PApplet app){
+    Herz(PApplet app, int PosX){
         super(app);
-        setPosX(X_POSITIONEN_DER_SPUREN.get(rand.nextInt(X_POSITIONEN_DER_SPUREN.size())));
+        setPosX(PosX);
         setPosY(-500);
         setBreite(40);
         setHöhe(40);

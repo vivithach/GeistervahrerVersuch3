@@ -6,7 +6,7 @@ public class GegnerAutoTest {
 
     @Test
     public void bewegeGegnerAutoTest() {
-        GegnerAuto testAuto = new GegnerAuto(new PApplet());
+        GegnerAuto testAuto = new GegnerAuto(new PApplet(),25);
         testAuto.setPosY(100);
         int startPosY = testAuto.getPosY();
         int bewegeUm = 2;

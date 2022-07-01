@@ -5,7 +5,7 @@ import processing.core.PApplet;
 public class HerzTest {
     @Test
     public void bewegeHerzTest() {
-        Herz testHerz = new Herz(new PApplet());
+        Herz testHerz = new Herz(new PApplet(),40);
         testHerz.setPosY(100);
         int startPosY = testHerz.getPosY();
         int bewegeUm = 2;

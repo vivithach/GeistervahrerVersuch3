@@ -5,7 +5,7 @@ import processing.core.PApplet;
 public class SpeedwayTest {
     @Test
     public void actTest() {
-        Speedway testSpeedway = new Speedway(new PApplet());
+        Speedway testSpeedway = new Speedway(new PApplet(), 15);
         testSpeedway.setPosY(100);
         int startPosY = testSpeedway.getPosY();
         int bewegeUm = 2;
