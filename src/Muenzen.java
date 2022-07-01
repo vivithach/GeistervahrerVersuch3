@@ -2,22 +2,22 @@ import processing.core.PApplet;
 import processing.core.PImage;
 
 public class Muenzen extends Spielelement{
-    private String BildAdresse = "data/coin.png";
-    private PImage BildMuenzen = null;
+    private String bildAdresse = "data/coin.png";
+    private PImage bildMuenzen = null;
 
     Muenzen(PApplet app, int PosX){
         super(app);
         setPosX(PosX);
         setPosY(-50);
         setBreite(40);
-        setHöhe(40);
+        setHoehe(40);
     }
 
     public void drawing(){
-        if(BildMuenzen == null){
-            BildMuenzen = app.loadImage(BildAdresse);
+        if(bildMuenzen == null){
+            bildMuenzen = app.loadImage(bildAdresse);
         }
-        app.image(BildMuenzen,getPosX(),getPosY(),getBreite(),getHöhe());
+        app.image(bildMuenzen,getPosX(),getPosY(),getBreite(), getHoehe());
     }
 
     public void bewegeMuenzen(int speed){

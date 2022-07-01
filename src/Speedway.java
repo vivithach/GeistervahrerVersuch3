@@ -2,8 +2,8 @@ import processing.core.PApplet;
 import processing.core.PImage;
 
 public class Speedway extends Spielelement{
-    private String BildAdresse = "data/rainbow.png";
-    private PImage BildSpeedway = null;
+    private String bildAdresse = "data/rainbow.png";
+    private PImage bildSpeedway = null;
 
     private boolean reingefahren = false;
 
@@ -12,15 +12,15 @@ public class Speedway extends Spielelement{
         setPosX(PosX);
         setPosY(-100);
         setBreite(90);
-        setHöhe(40);
+        setHoehe(40);
     }
 
 
     public void drawing(){
-        if(BildSpeedway == null){
-            BildSpeedway = app.loadImage(BildAdresse);
+        if(bildSpeedway == null){
+            bildSpeedway = app.loadImage(bildAdresse);
         }
-        app.image(BildSpeedway,getPosX(),getPosY(),getBreite(),getHöhe());
+        app.image(bildSpeedway,getPosX(),getPosY(),getBreite(), getHoehe());
     }
 
     public void bewegeSpeedway(int speed){

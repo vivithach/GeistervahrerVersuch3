@@ -2,22 +2,22 @@ import processing.core.PApplet;
 import processing.core.PImage;
 
 public class Herz extends Spielelement{
-    private String BildAdresse = "data/heart.png";
-    private PImage BildHerz = null;
+    private String bildAdresse = "data/heart.png";
+    private PImage bildHerz = null;
 
     Herz(PApplet app, int PosX){
         super(app);
         setPosX(PosX);
         setPosY(-500);
         setBreite(40);
-        setHöhe(40);
+        setHoehe(40);
     }
 
     public void drawing(){
-        if(BildHerz == null){
-            BildHerz = app.loadImage(BildAdresse);
+        if(bildHerz == null){
+            bildHerz = app.loadImage(bildAdresse);
         }
-        app.image(BildHerz,getPosX(),getPosY(),getBreite(),getHöhe());
+        app.image(bildHerz,getPosX(),getPosY(),getBreite(), getHoehe());
     }
 
     public void bewegeHerz(int speed){

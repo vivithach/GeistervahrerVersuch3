@@ -4,7 +4,7 @@ public class Spielelement {
     private int PosX;
     private int PosY;
     private int breite;
-    private int höhe;
+    private int hoehe;
     protected PApplet app;
 
     public Spielelement(PApplet app) {
@@ -35,17 +35,17 @@ public class Spielelement {
         this.breite = breite;
     }
 
-    public int getHöhe() {
-        return höhe;
+    public int getHoehe() {
+        return hoehe;
     }
 
-    public void setHöhe(int höhe) {
-        this.höhe = höhe;
+    public void setHoehe(int hoehe) {
+        this.hoehe = hoehe;
     }
 
     public boolean kollision(SpielerAuto spieler){
         boolean KollisionX = (getPosX() >= spieler.getPosX() || (getPosX()+breite) >= spieler.getPosX()) && (getPosX() <= (spieler.getPosX()+breite) || (getPosX()+breite) <= (spieler.getPosX()+breite));
-        boolean KollisionY = (getPosY() >= spieler.getPosY() || (getPosY()+höhe) >= spieler.getPosY()) && (getPosY() <= (spieler.getPosY()+höhe) || (getPosY()+höhe) <= (spieler.getPosY()+höhe));
+        boolean KollisionY = (getPosY() >= spieler.getPosY() || (getPosY()+ hoehe) >= spieler.getPosY()) && (getPosY() <= (spieler.getPosY()+ hoehe) || (getPosY()+ hoehe) <= (spieler.getPosY()+ hoehe));
         return (KollisionX && KollisionY);
     }
 }

@@ -10,14 +10,14 @@ public class Schraubenschluessel extends Spielelement{
         setPosX(PosX);
         setPosY(-100);
         setBreite(90);
-        setHöhe(40);
+        setHoehe(40);
     }
 
     public void drawing(){
         if(BildSchraubenschluessel == null){
             BildSchraubenschluessel = app.loadImage(BildAdresse);
         }
-        app.image(BildSchraubenschluessel,getPosX(),getPosY(),getBreite(),getHöhe());
+        app.image(BildSchraubenschluessel,getPosX(),getPosY(),getBreite(), getHoehe());
     }
 
     public void bewegeSchraubenschluessel(int speed){

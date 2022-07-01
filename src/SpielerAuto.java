@@ -2,9 +2,9 @@ import processing.core.PApplet;
 import processing.core.PImage;
 
 public class SpielerAuto extends Spielelement {
-    private String BildAdresse = "data/Spieler.png";
-    private PImage Bild = null;
-    
+    private String bildAdresse = "data/Spieler.png";
+    private PImage bild = null;
+
     private int bewegeObjektUmEinheiten = 8;
     private int begrenzungLinks = 25;
     private int begrenzungRechts = 515;
@@ -16,15 +16,15 @@ public class SpielerAuto extends Spielelement {
         setPosX(265);
         setPosY(450);
         setBreite(60);
-        setHöhe(100);
+        setHoehe(100);
         setSteuerungIstVerkehrt(false);
     }
 
     public void drawing(){
-        if(Bild == null){
-            Bild = app.loadImage(BildAdresse);
+        if(bild == null){
+            bild = app.loadImage(bildAdresse);
         }
-        app.image(Bild,getPosX(),getPosY(),getBreite(),getHöhe());
+        app.image(bild,getPosX(),getPosY(),getBreite(), getHoehe());
     }
 
     public void bewegeAutoNachLinks(){

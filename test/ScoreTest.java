@@ -9,9 +9,9 @@ public class ScoreTest{
     @Test
     public void erhoeheScoreTest() {
         Score testScore = new Score(app);
-        testScore.setScore(1);
-        int startScore = testScore.getScore();
-        testScore.erhöheScore();
-        assertEquals(startScore+1, testScore.getScore());
+        testScore.setPunkte(1);
+        int startScore = testScore.getPunkte();
+        testScore.erhoehePunkte();
+        assertEquals(startScore+1, testScore.getPunkte());
     }
 }

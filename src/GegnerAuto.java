@@ -10,14 +10,14 @@ public class GegnerAuto extends Spielelement{
         setPosX(PosX);
         setPosY(-400);
         setBreite(60);
-        setHöhe(100);
+        setHoehe(100);
     }
 
     public void drawing(){
         if(GegnerBild == null){
             GegnerBild = app.loadImage(BildAdresse);
         }
-        app.image(GegnerBild,getPosX(),getPosY(),getBreite(),getHöhe());
+        app.image(GegnerBild,getPosX(),getPosY(),getBreite(), getHoehe());
     }
 
     public void bewegeGegnerAuto(int speed){

@@ -2,11 +2,11 @@ import processing.core.PApplet;
 
 public class Score extends Spielelement{
 
-    private int score;
+    private int punkte;
 
     Score(PApplet app){
         super(app);
-        score = 0;
+        punkte = 0;
         setPosX(50);
         setPosY(50);
     }
@@ -14,19 +14,19 @@ public class Score extends Spielelement{
     public void drawing(){
         app.stroke(255);
         app.textSize(20);
-        app.text("Score: "+ this.score, getPosX(), getPosY());
+        app.text("Score: "+ this.punkte, getPosX(), getPosY());
     }
 
-    public void erhöheScore(){
-        score += 1;
+    public void erhoehePunkte(){
+        punkte += 1;
     }
 
-    public int getScore() {
-        return score;
+    public int getPunkte() {
+        return punkte;
     }
 
-    public void setScore(int score) {
-        this.score = score;
+    public void setPunkte(int score) {
+        this.punkte = score;
     }
 }
 

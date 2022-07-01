@@ -6,16 +6,16 @@ import java.util.Random;
 
 public class Modell {
 
-    private int spielGeschwindigkeit;
-    private int hinzufruegeIntervall;
+    private int spielgeschwindigkeit;
+    private int hinzufuegeIntervall;
     private float lastAddTime;
-    private Background background;
+    private Background hintergrund;
     private Lebensbalken leben;
     Score score;
     private PApplet app;
 
     SpielerAuto spieler;
-    ArrayList<GegnerAuto> gegenerAutos;
+    ArrayList<GegnerAuto> gegnerAutos;
     ArrayList<Herz> herzItems;
     ArrayList<Muenzen> muenzItems;
     ArrayList<Speedway> speedwayItems;
@@ -26,18 +26,18 @@ public class Modell {
     
     Modell(PApplet app){
         this.app = app;
-        spielGeschwindigkeit = 2;
+        spielgeschwindigkeit = 2;
 
-        hinzufruegeIntervall = 1000;
+        hinzufuegeIntervall = 1000;
         lastAddTime = 0;
         gameScreen = GameScreen.START_SCREEN;
         
-        gegenerAutos = new ArrayList<>();
+        gegnerAutos = new ArrayList<>();
         herzItems = new ArrayList<>();
         muenzItems = new ArrayList<>();
         speedwayItems = new ArrayList<>();
         schraubenschluesselItems = new ArrayList<>();
-        background = new Background(app);
+        hintergrund = new Background(app);
         spieler = new SpielerAuto(app);
         leben = new Lebensbalken(app);
         screen = new ScreenControll(app);
@@ -77,25 +77,25 @@ public class Modell {
         return anzahl;
     }
 
-    public void fuegeGegeneAutosHinzu(int anzahlObjekte) {
+    public void hinzufuegeGegnerautos(int anzahlObjekte) {
         for(int i = 0; i < anzahlObjekte; i++){
-            gegenerAutos.add(new GegnerAuto(app, erzeugeRandomZahl("fahrbahnPositionGegner")));
+            gegnerAutos.add(new GegnerAuto(app, erzeugeRandomZahl("fahrbahnPositionGegner")));
         }
     }
 
-    public void loescheGegnerAuto() {
-        for (int i = 0; i < gegenerAutos.size(); i++) {
-            GegnerAuto AktuellesAuto = gegenerAutos.get(i);
+    public void loescheGegnerAutos() {
+        for (int i = 0; i < gegnerAutos.size(); i++) {
+            GegnerAuto AktuellesAuto = gegnerAutos.get(i);
             if (AktuellesAuto.getPosY() > 700) {
-                gegenerAutos.remove(i);
+                gegnerAutos.remove(i);
             }
         }
     }
 
     public void ueberpruefeKollisionMitGegnerAuto() {
-        for(GegnerAuto aktuellesAuto: gegenerAutos){
+        for(GegnerAuto aktuellesAuto: gegnerAutos){
             aktuellesAuto.drawing();
-            aktuellesAuto.bewegeGegnerAuto(spielGeschwindigkeit);
+            aktuellesAuto.bewegeGegnerAuto(spielgeschwindigkeit);
             if(aktuellesAuto.kollision(spieler)){
                 leben.minusLeben();
             }
@@ -103,13 +103,13 @@ public class Modell {
     }
     
 
-    public void feugeHerzItemsHinzu(int anzahlObjekte) {
+    public void hinzufuegeHerzItems(int anzahlObjekte) {
         if(anzahlObjekte == 1){
             herzItems.add(new Herz(app, erzeugeRandomZahl("fahrbahnPositionHerzMuenzen")));
         }
     }
 
-    public void loescheHerzItem() {
+    public void loescheHerzItems() {
         for (int i = 0; i < herzItems.size(); i++) {
             Herz aktuellesHerz = herzItems.get(i);
             if (aktuellesHerz.getPosY() > 700) {
@@ -128,13 +128,13 @@ public class Modell {
         }
     }
     
-    public void fuegeMuenzenItemsHinzu(int anzahlObjekte) {
+    public void hinzufuegeMuenzItems(int anzahlObjekte) {
         if(anzahlObjekte == 0){
             muenzItems.add(new Muenzen(app, erzeugeRandomZahl("fahrbahnPositionHerzMuenzen")));
         }
     }
 
-    public void loescheMuenzeItems() {
+    public void loescheMuenzItems() {
         for(int i = 0; i< muenzItems.size() ; i++){
             Muenzen aktuellesMuenze = muenzItems.get(i);
             if(aktuellesMuenze.getPosY()> 700){
@@ -148,13 +148,13 @@ public class Modell {
             Muenzen aktuellesMuenze = muenzItems.get(i);
             if(aktuellesMuenze.kollision(spieler)){
                 muenzItems.remove(i);
-                score.erhöheScore();
+                score.erhoehePunkte();
             }
         }
     }
 
     
-    public void fuegeSpeedwayItemsHinzu(int anzahlObjekte) {
+    public void hinzufuegeSpeedwayItems(int anzahlObjekte) {
         if(anzahlObjekte == 1){
             speedwayItems.add(new Speedway(app, erzeugeRandomZahl("fahrbahnPositionSchraubenschluesselSpeedway")));
         }
@@ -165,8 +165,8 @@ public class Modell {
             Speedway aktuellesspeedBlock = speedwayItems.get(i);
             if (aktuellesspeedBlock.getPosY() > 1750) {
                 if (aktuellesspeedBlock.isReingefahren()) {
-                    spielGeschwindigkeit = 2;
-                    hinzufruegeIntervall = 1000;
+                    spielgeschwindigkeit = 2;
+                    hinzufuegeIntervall = 1000;
                     aktuellesspeedBlock.setReingefahren(false);
                 }
                 speedwayItems.remove(i);
@@ -175,19 +175,19 @@ public class Modell {
     }
     
 
-    public void ueberprüfeKollisionMitSpeedwayItem() {
+    public void ueberpruefeKollisionMitSpeedwayItem() {
         for(int i = 0; i< speedwayItems.size() ; i++){
             Speedway aktuellesspeedBlock = speedwayItems.get(i);
             if(aktuellesspeedBlock.kollision(spieler)){
-                spielGeschwindigkeit = 10;
-                hinzufruegeIntervall = 250;
+                spielgeschwindigkeit = 10;
+                hinzufuegeIntervall = 250;
                 aktuellesspeedBlock.setReingefahren(true);
             }
         }
     }
     
     
-    public void fuegeSchraubenschuesselItemsHinzu(int anzahlObjekte) {
+    public void hinzufuegeSchraubenschuesselItems(int anzahlObjekte) {
         if(anzahlObjekte == 1){
             schraubenschluesselItems.add(new Schraubenschluessel(app, erzeugeRandomZahl("fahrbahnPositionSchraubenschluesselSpeedway")));
         }
@@ -213,46 +213,46 @@ public class Modell {
     }
 
     
-    public void fuegeObjekteHinzu(){
-        if (app.millis()-lastAddTime > hinzufruegeIntervall) {
-            fuegeGegeneAutosHinzu(erzeugeRandomZahl("anzahlGegnerAutos"));
-            feugeHerzItemsHinzu(erzeugeRandomZahl("anszahlItems"));
-            fuegeMuenzenItemsHinzu(erzeugeRandomZahl("anszahlItems"));
-            fuegeSpeedwayItemsHinzu(erzeugeRandomZahl("anszahlItems"));
-            fuegeSchraubenschuesselItemsHinzu(erzeugeRandomZahl("anszahlItems"));
+    public void hinzufuegeObjekte(){
+        if (app.millis()-lastAddTime > hinzufuegeIntervall) {
+            hinzufuegeGegnerautos(erzeugeRandomZahl("anzahlGegnerAutos"));
+            hinzufuegeHerzItems(erzeugeRandomZahl("anszahlItems"));
+            hinzufuegeMuenzItems(erzeugeRandomZahl("anszahlItems"));
+            hinzufuegeSpeedwayItems(erzeugeRandomZahl("anszahlItems"));
+            hinzufuegeSchraubenschuesselItems(erzeugeRandomZahl("anszahlItems"));
             lastAddTime = app.millis();
         }
     }
 
     public void loescheObjekte(){
-        loescheGegnerAuto();
+        loescheGegnerAutos();
         loescheSpeedwayItems();
-        loescheHerzItem();
-        loescheMuenzeItems();
+        loescheHerzItems();
+        loescheMuenzItems();
         loescheSchraubenschluesselItems();
     }
 
     public void aktualiesiereZustandItems() {
         for(Speedway aktuellesspeedBlock: speedwayItems){
             aktuellesspeedBlock.drawing();
-            aktuellesspeedBlock.bewegeSpeedway(spielGeschwindigkeit);
+            aktuellesspeedBlock.bewegeSpeedway(spielgeschwindigkeit);
         }
         for(Herz aktuellesHerz: herzItems){
             aktuellesHerz.drawing();
-            aktuellesHerz.bewegeHerz(spielGeschwindigkeit);
+            aktuellesHerz.bewegeHerz(spielgeschwindigkeit);
         }
         for(Muenzen aktuellesMuenze: muenzItems){
             aktuellesMuenze.drawing();
-            aktuellesMuenze.bewegeMuenzen(spielGeschwindigkeit);
+            aktuellesMuenze.bewegeMuenzen(spielgeschwindigkeit);
         }
         for(Schraubenschluessel aktuellesTool: schraubenschluesselItems){
             aktuellesTool.drawing();
-            aktuellesTool.bewegeSchraubenschluessel(spielGeschwindigkeit);
+            aktuellesTool.bewegeSchraubenschluessel(spielgeschwindigkeit);
         }
     }
     
     public void ueberpruefeKollisionMitObjekt() {
-        ueberprüfeKollisionMitSpeedwayItem();
+        ueberpruefeKollisionMitSpeedwayItem();
         ueberpruefeKollisionMitHerzItem();
         ueberpruefeKollisionMitMuenzItem();
         ueberpruefeKollisionMitSchraubenschluesselItem();
@@ -262,7 +262,7 @@ public class Modell {
     public void RUN(){
         ueberpruefeLeben();
         aktualisiereHintergrund();
-        fuegeObjekteHinzu();
+        hinzufuegeObjekte();
         loescheObjekte();
         aktualiesiereZustandItems();
         ueberpruefeKollisionMitObjekt();
@@ -278,7 +278,7 @@ public class Modell {
     }
 
     public void aktualisiereHintergrund() {
-        background.drawing();
-        background.bewegeHintergrund(spielGeschwindigkeit);
+        hintergrund.drawing();
+        hintergrund.bewegeHintergrund(spielgeschwindigkeit);
     }
 }
